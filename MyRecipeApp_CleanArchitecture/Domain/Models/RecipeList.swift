@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct RecipeList {
-    var recipeList: [Recipe]
+struct RecipeList: Codable {
+    var recipeList: [Recipe]?
     
     // TODO:- Add more properties here eg. for pagination
     //    let page: Int

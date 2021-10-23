@@ -8,7 +8,7 @@
 import Foundation
 
 
-private struct AppProviderKey: InjectionKey {
+private struct AppConfigKey: InjectionKey {
     static var currentValue: AppConfig = AppConfig()
 }
 
@@ -16,8 +16,12 @@ private struct AppProviderKey: InjectionKey {
     We create a NetworkProviderKey class that is responsible for instantiating NetworkProvider Key
     and conforms Injection Key protocol
  */
-private struct NetworkProviderKey: InjectionKey{
+private struct NetworkProviderKey: InjectionKey {
     static var currentValue: NetworkProviding = NetworkProvider()
+}
+
+private struct RecipeRepositoryKey: InjectionKey {
+    static var currentValue: RecipeRepository = RecipeRepositoryImpl()
 }
 
 /**
@@ -28,12 +32,17 @@ private struct NetworkProviderKey: InjectionKey{
 extension InjectedValues {
     
     var appConfig: AppConfig {
-        get { Self[AppProviderKey.self]}
-        set { Self[AppProviderKey.self] = newValue }
+        get { Self[AppConfigKey.self]}
+        set { Self[AppConfigKey.self] = newValue }
     }
     
     var networkProvider: NetworkProviding {
         get { Self[NetworkProviderKey.self]}
         set { Self[NetworkProviderKey.self] = newValue }
+    }
+    
+    var recipeRepository: RecipeRepository {
+        get { Self[RecipeRepositoryKey.self]}
+        set { Self[RecipeRepositoryKey.self] = newValue }
     }
 }

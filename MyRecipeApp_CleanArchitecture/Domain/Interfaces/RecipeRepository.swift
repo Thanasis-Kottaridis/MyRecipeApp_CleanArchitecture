@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol RecipeRepository {
-    func fetchRecipes(cached: @escaping (RecipeList)-> Void,
-                      completion: @escaping (Result<RecipeList, Error>)-> Void)
+    func fetchRecipes(cached: @escaping ([Recipe])-> Void,
+                      completion: @escaping ([Recipe])-> Void,
+                      errorCompletion: @escaping (AFError)-> Void
+    )
 }

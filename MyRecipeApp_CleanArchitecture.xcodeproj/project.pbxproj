@@ -31,6 +31,7 @@
 		AEE53D962724715E004E075C /* RecipeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D952724715E004E075C /* RecipeList.swift */; };
 		AEE53D9A27247401004E075C /* RecipeRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D9927247401004E075C /* RecipeRepositoryImpl.swift */; };
 		AEE53D9C272474F6004E075C /* RecipeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D9B272474F6004E075C /* RecipeApi.swift */; };
+		AEE53DA02724BBDF004E075C /* AFDataRequest_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D9F2724BBDF004E075C /* AFDataRequest_Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		AEE53D952724715E004E075C /* RecipeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeList.swift; sourceTree = "<group>"; };
 		AEE53D9927247401004E075C /* RecipeRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepositoryImpl.swift; sourceTree = "<group>"; };
 		AEE53D9B272474F6004E075C /* RecipeApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeApi.swift; sourceTree = "<group>"; };
+		AEE53D9F2724BBDF004E075C /* AFDataRequest_Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFDataRequest_Ext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +92,6 @@
 				866DD6C2A85D8B12EC3FC4F2 /* Pods-MyRecipeApp_CleanArchitecture.debug.xcconfig */,
 				2FFDDF9B122E9524539D95F4 /* Pods-MyRecipeApp_CleanArchitecture.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -323,8 +324,17 @@
 			isa = PBXGroup;
 			children = (
 				AEE53D9927247401004E075C /* RecipeRepositoryImpl.swift */,
+				AEE53D9E2724BB9C004E075C /* Utils */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		AEE53D9E2724BB9C004E075C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AEE53D9F2724BBDF004E075C /* AFDataRequest_Ext.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,6 +462,7 @@
 				AEE53D5327237880004E075C /* ViewController.swift in Sources */,
 				AEE53D9C272474F6004E075C /* RecipeApi.swift in Sources */,
 				AEE53D8A27243AF7004E075C /* InjectCoordinators.swift in Sources */,
+				AEE53DA02724BBDF004E075C /* AFDataRequest_Ext.swift in Sources */,
 				AEE53D4F27237880004E075C /* AppDelegate.swift in Sources */,
 				AEE53D762723848F004E075C /* Coordinator.swift in Sources */,
 				AEE53D5927237880004E075C /* MyRecipeApp_CleanArchitecture.xcdatamodeld in Sources */,

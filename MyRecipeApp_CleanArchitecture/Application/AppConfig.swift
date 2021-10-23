@@ -10,7 +10,7 @@ import Foundation
 final class AppConfig {
     
     lazy var apiBaseURL: String = {
-        let apiBaseURL = "https://vivawallet.free.beeceptor.com"
+        let apiBaseURL = "https://vivawallet.free.beeceptor.com/v1/api"
         return apiBaseURL
     }()
     
