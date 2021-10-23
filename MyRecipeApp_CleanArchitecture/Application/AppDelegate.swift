@@ -11,29 +11,32 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    var mainCoordinator: MainCoordinator?
+    @Injected(\.mainNavController)
+    var mainNavController: UINavigationController
+    @Injected(\.mainCoordinator)
+    var mainCoordinator: MainCoordinator
     var window: UIWindow?
-
-    /**
-        At this point since we use coordinator pattern we have
-        to instantiate coordinator in didFinishLaunchingWithOptions
-        and to disable Storyboard default launch.
     
-        #SOS!!!
-        In order to run MainCoordinator successfully we have to go and remove
-        main from main interface option in project settings 
+    /**
+     At this point since we use coordinator pattern we have
+     to instantiate coordinator in didFinishLaunchingWithOptions
+     and to disable Storyboard default launch.
+     
+     #SOS!!!
+     In order to run MainCoordinator successfully we have to go and remove
+     main from main interface option in project settings
      */
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // create the main navigation controller to be used for our app
-        let navController = UINavigationController()
+        //        let navController = UINavigationController()
         
         // send that into our coordinator so that it can display view controllers
-        mainCoordinator = MainCoordinator(navigationController: navController)
-                mainCoordinator?.start()
+//        mainCoordinator = MainCoordinator(navigationController: navController)
+        mainCoordinator.start()
         
         // create a basic UIWindow and activate it
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navController
+        window?.rootViewController = mainNavController
         window?.makeKeyAndVisible()
         
         return true

@@ -20,6 +20,11 @@
 		AEE53D7D272393B9004E075C /* Collections_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D7C272393B9004E075C /* Collections_Ext.swift */; };
 		AEE53D7F272395BF004E075C /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D7E272395BF004E075C /* MainCoordinator.swift */; };
 		AEE53D8127239A3A004E075C /* RecipeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D8027239A3A004E075C /* RecipeCoordinator.swift */; };
+		AEE53D832723A749004E075C /* RecipeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D822723A749004E075C /* RecipeListViewModel.swift */; };
+		AEE53D862723AA7F004E075C /* CustomInject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D852723AA7F004E075C /* CustomInject.swift */; };
+		AEE53D8827243AE0004E075C /* InjectModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D8727243AE0004E075C /* InjectModules.swift */; };
+		AEE53D8A27243AF7004E075C /* InjectCoordinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D8927243AF7004E075C /* InjectCoordinators.swift */; };
+		AEE53D8E27243BAD004E075C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D8D27243BAD004E075C /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +43,11 @@
 		AEE53D7C272393B9004E075C /* Collections_Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collections_Ext.swift; sourceTree = "<group>"; };
 		AEE53D7E272395BF004E075C /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		AEE53D8027239A3A004E075C /* RecipeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCoordinator.swift; sourceTree = "<group>"; };
+		AEE53D822723A749004E075C /* RecipeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListViewModel.swift; sourceTree = "<group>"; };
+		AEE53D852723AA7F004E075C /* CustomInject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInject.swift; sourceTree = "<group>"; };
+		AEE53D8727243AE0004E075C /* InjectModules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectModules.swift; sourceTree = "<group>"; };
+		AEE53D8927243AF7004E075C /* InjectCoordinators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectCoordinators.swift; sourceTree = "<group>"; };
+		AEE53D8D27243BAD004E075C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +84,7 @@
 				AEE53D672723819F004E075C /* Data */,
 				AEE53D6A2723824A004E075C /* Domain */,
 				AEE53D6E27238350004E075C /* Presentation */,
+				AEE53D8B27243B70004E075C /* Infrastracture */,
 				AEE53D662723816C004E075C /* Resources */,
 				AEE53D5027237880004E075C /* SceneDelegate.swift */,
 			);
@@ -83,6 +94,7 @@
 		AEE53D6527238159004E075C /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				AEE53D842723A7C8004E075C /* Di */,
 				AEE53D7427238479004E075C /* Base */,
 				AEE53D4E27237880004E075C /* AppDelegate.swift */,
 				AEE53D7E272395BF004E075C /* MainCoordinator.swift */,
@@ -178,6 +190,7 @@
 		AEE53D72272383C4004E075C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				AEE53D822723A749004E075C /* RecipeListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -222,6 +235,32 @@
 				AEE53D7C272393B9004E075C /* Collections_Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AEE53D842723A7C8004E075C /* Di */ = {
+			isa = PBXGroup;
+			children = (
+				AEE53D852723AA7F004E075C /* CustomInject.swift */,
+				AEE53D8727243AE0004E075C /* InjectModules.swift */,
+				AEE53D8927243AF7004E075C /* InjectCoordinators.swift */,
+			);
+			path = Di;
+			sourceTree = "<group>";
+		};
+		AEE53D8B27243B70004E075C /* Infrastracture */ = {
+			isa = PBXGroup;
+			children = (
+				AEE53D8C27243B86004E075C /* Network */,
+			);
+			path = Infrastracture;
+			sourceTree = "<group>";
+		};
+		AEE53D8C27243B86004E075C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AEE53D8D27243BAD004E075C /* NetworkService.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,12 +334,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEE53D832723A749004E075C /* RecipeListViewModel.swift in Sources */,
+				AEE53D8827243AE0004E075C /* InjectModules.swift in Sources */,
+				AEE53D862723AA7F004E075C /* CustomInject.swift in Sources */,
 				AEE53D8127239A3A004E075C /* RecipeCoordinator.swift in Sources */,
 				AEE53D5327237880004E075C /* ViewController.swift in Sources */,
+				AEE53D8A27243AF7004E075C /* InjectCoordinators.swift in Sources */,
 				AEE53D4F27237880004E075C /* AppDelegate.swift in Sources */,
 				AEE53D762723848F004E075C /* Coordinator.swift in Sources */,
 				AEE53D5927237880004E075C /* MyRecipeApp_CleanArchitecture.xcdatamodeld in Sources */,
 				AEE53D5127237880004E075C /* SceneDelegate.swift in Sources */,
+				AEE53D8E27243BAD004E075C /* NetworkService.swift in Sources */,
 				AEE53D6D272382D0004E075C /* Recipe.swift in Sources */,
 				AEE53D792723908C004E075C /* Storyboarded.swift in Sources */,
 				AEE53D7F272395BF004E075C /* MainCoordinator.swift in Sources */,

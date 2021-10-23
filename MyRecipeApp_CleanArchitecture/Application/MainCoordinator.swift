@@ -20,7 +20,8 @@ class MainCoordinator: Coordinator {
         // if yes we would run login flow
         
         // start recipe Coordinator
-        let recipeCoord = RecipeCoordinator(navigationController: navigationController)
+        // by injecting it from InjectedValues
+        let recipeCoord = InjectedValues[\.recipeCoordinator]
         recipeCoord.start()
     }
     
