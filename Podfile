@@ -7,7 +7,7 @@ target 'MyRecipeApp_CleanArchitecture' do
 
   # Pods for MyRecipeApp_CleanArchitecture
 
-  pod 'Alamofire', '4.9.0'
+  pod 'Alamofire', '~> 5.4'
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
   pod 'RxDataSources', '~> 5.0'
