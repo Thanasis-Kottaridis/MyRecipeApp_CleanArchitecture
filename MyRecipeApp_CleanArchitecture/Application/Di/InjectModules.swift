@@ -17,7 +17,7 @@ private struct AppConfigKey: InjectionKey {
     and conforms Injection Key protocol
  */
 private struct NetworkProviderKey: InjectionKey {
-    static var currentValue: NetworkProviding = NetworkProvider()
+    static var currentValue: NetworkProvider = NetworkProvider()
 }
 
 private struct RecipeRepositoryKey: InjectionKey {
@@ -36,7 +36,7 @@ extension InjectedValues {
         set { Self[AppConfigKey.self] = newValue }
     }
     
-    var networkProvider: NetworkProviding {
+    var networkProvider: NetworkProvider {
         get { Self[NetworkProviderKey.self]}
         set { Self[NetworkProviderKey.self] = newValue }
     }

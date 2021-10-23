@@ -6,20 +6,20 @@
 //
 
 import Foundation
+import Alamofire
 
-// TODO:- Dummy Network
-protocol NetworkProviding {
-    func requestData()
-}
-
-struct NetworkProvider: NetworkProviding {
-    func requestData() {
-        print("Data requested using the `NetworkProvider`")
-    }
-}
-
-struct MockedNetworkProvider: NetworkProviding {
-    func requestData() {
-        print("Data requested using the `MockedNetworkProvider`")
-    }
+struct NetworkProvider {
+    
+    lazy var manager: Session = {
+        //1
+        let configuration = URLSessionConfiguration.af.default
+        //2
+        configuration.timeoutIntervalForRequest = 30
+        //3
+        return Session(configuration: configuration)
+    }()
+    
+    
+    
+    // TODO: - Add more implementation
 }

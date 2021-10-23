@@ -10,15 +10,7 @@ import Alamofire
 
 final class RecipeRepositoryImpl: RecipeRepository {
     
-    //1
-    let sessionManager: Session = {
-        //2
-        let configuration = URLSessionConfiguration.af.default
-        //3
-        configuration.timeoutIntervalForRequest = 30
-        //4
-        return Session(configuration: configuration)
-    }()
+    let sessionManager: Session = InjectedValues[\.networkProvider].manager
     
     func fetchRecipes(
         cached: @escaping ([Recipe]) -> Void,
@@ -26,21 +18,10 @@ final class RecipeRepositoryImpl: RecipeRepository {
         errorCompletion: @escaping (AFError)-> Void
     ) {
         
-        sessionManager.request(RecipeApi.fetchRecipeList)
-            .validate()
-            .prettyPrintedJsonResponse()
-            .responseDecodable { (response: DataResponse<[Recipe], AFError>) in
-                switch response.result{
-                case .success(let recipeList):
-                    completion(recipeList)
-                case .failure(let error):
-                    guard let errorDescription = error.errorDescription
-                    else {return}
-                    debugPrint("Fetch recipe fail with error:")
-                    debugPrint(errorDescription)
-                    errorCompletion(error)
-                }
-            }
+        let _ = sessionManager.request(RecipeApi.fetchRecipeList)
+            .validateResponseWrapper(fromType: [Recipe].self,
+                                     completion: completion,
+                                     errorCompletion: errorCompletion)
     
     }
 }
