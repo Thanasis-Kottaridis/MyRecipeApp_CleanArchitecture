@@ -7,6 +7,11 @@
 
 import Foundation
 
+
+private struct AppProviderKey: InjectionKey {
+    static var currentValue: AppConfig = AppConfig()
+}
+
 /**
     We create a NetworkProviderKey class that is responsible for instantiating NetworkProvider Key
     and conforms Injection Key protocol
@@ -21,6 +26,12 @@ private struct NetworkProviderKey: InjectionKey{
     **Provider.self:** here provides Provider type (that conforms InjectionKey) to InjectedValues key subscript.
  */
 extension InjectedValues {
+    
+    var appConfig: AppConfig {
+        get { Self[AppProviderKey.self]}
+        set { Self[AppProviderKey.self] = newValue }
+    }
+    
     var networkProvider: NetworkProviding {
         get { Self[NetworkProviderKey.self]}
         set { Self[NetworkProviderKey.self] = newValue }
