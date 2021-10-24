@@ -162,9 +162,9 @@
 		AEE53D662723816C004E075C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AEE53D5F27237882004E075C /* Info.plist */,
 				AEE53D5A27237882004E075C /* Assets.xcassets */,
 				AEE53D5C27237882004E075C /* LaunchScreen.storyboard */,
-				AEE53D5F27237882004E075C /* Info.plist */,
 				AEE53DC32725D84D004E075C /* Localizable.strings */,
 			);
 			path = Resources;
