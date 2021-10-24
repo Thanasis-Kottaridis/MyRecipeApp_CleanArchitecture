@@ -7,7 +7,6 @@
 
 import Foundation
 import Alamofire
-import RxSwift
 
 final class RecipeRepositoryImpl: RecipeRepository {
     
@@ -19,7 +18,7 @@ final class RecipeRepositoryImpl: RecipeRepository {
     func fetchRecipes(
         cached: @escaping ([Recipe]) -> Void,
         completion: @escaping ([Recipe]) -> Void,
-        errorCompletion: @escaping (AFError)-> Void
+        errorCompletion: @escaping (Error?)-> Void
     ) {
         
         cache.getResponse {[weak self] result in

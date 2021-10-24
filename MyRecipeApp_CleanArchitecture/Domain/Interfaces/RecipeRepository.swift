@@ -11,6 +11,6 @@ import Alamofire
 protocol RecipeRepository {
     func fetchRecipes(cached: @escaping ([Recipe])-> Void,
                       completion: @escaping ([Recipe])-> Void,
-                      errorCompletion: @escaping (AFError)-> Void
+                      errorCompletion: @escaping (Error?)-> Void
     )
 }

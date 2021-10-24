@@ -27,7 +27,7 @@ extension DataRequest {
     func validateResponseWrapper<T>(
         fromType: T.Type,
         completion: @escaping (T) -> Void,
-        errorCompletion: @escaping (AFError)-> Void
+        errorCompletion: @escaping (Error?)-> Void
     ) -> Self where T: Codable {
         return validate()
             .prettyPrintedJsonResponse()
@@ -36,7 +36,7 @@ extension DataRequest {
                 case .success(let data):
                     completion(data)
                 case .failure(let error):
-                    errorCompletion(error)
+                    errorCompletion(error.underlyingError)
                 }
             }
     }

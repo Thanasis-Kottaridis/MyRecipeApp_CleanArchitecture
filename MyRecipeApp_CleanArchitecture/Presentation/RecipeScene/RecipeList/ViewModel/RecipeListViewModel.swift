@@ -6,7 +6,16 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
-class RecipeListViewModel {
+class RecipeListViewModel: RecipeActionDispatcher {
     
+    // MARK: - Vars
+    /// this helper var is used to perform actions  to coordinator
+    var recipeActionHandler: RecipeActionHandler
+    
+    init(recipeActionHandler: RecipeActionHandler) {
+        self.recipeActionHandler = recipeActionHandler
+    }
 }
