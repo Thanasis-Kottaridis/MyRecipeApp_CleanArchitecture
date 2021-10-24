@@ -39,6 +39,10 @@
 		AEE53DBF2725BC6B004E075C /* RecipeListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53DBD2725BC6B004E075C /* RecipeListVC.swift */; };
 		AEE53DC02725BC6B004E075C /* RecipeListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEE53DBE2725BC6B004E075C /* RecipeListVC.xib */; };
 		AEE53DC22725CFD9004E075C /* FeedbackMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53DC12725CFD9004E075C /* FeedbackMessage.swift */; };
+		AEE53DC42725D84D004E075C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AEE53DC32725D84D004E075C /* Localizable.strings */; };
+		AEE53DC82725D9B6004E075C /* RecipeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53DC62725D9B6004E075C /* RecipeListCell.swift */; };
+		AEE53DC92725D9B6004E075C /* RecipeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEE53DC72725D9B6004E075C /* RecipeListCell.xib */; };
+		AEE53DCB2725F1FF004E075C /* UIView_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53DCA2725F1FF004E075C /* UIView_Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +82,10 @@
 		AEE53DBD2725BC6B004E075C /* RecipeListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListVC.swift; sourceTree = "<group>"; };
 		AEE53DBE2725BC6B004E075C /* RecipeListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeListVC.xib; sourceTree = "<group>"; };
 		AEE53DC12725CFD9004E075C /* FeedbackMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackMessage.swift; sourceTree = "<group>"; };
+		AEE53DC32725D84D004E075C /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		AEE53DC62725D9B6004E075C /* RecipeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListCell.swift; sourceTree = "<group>"; };
+		AEE53DC72725D9B6004E075C /* RecipeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeListCell.xib; sourceTree = "<group>"; };
+		AEE53DCA2725F1FF004E075C /* UIView_Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_Ext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +166,7 @@
 				AEE53D5A27237882004E075C /* Assets.xcassets */,
 				AEE53D5C27237882004E075C /* LaunchScreen.storyboard */,
 				AEE53D5F27237882004E075C /* Info.plist */,
+				AEE53DC32725D84D004E075C /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -256,6 +265,7 @@
 		AEE53D73272383D5004E075C /* RecipeList */ = {
 			isa = PBXGroup;
 			children = (
+				AEE53DC52725D97B004E075C /* Components */,
 				AEE53DB02725A07A004E075C /* Interactors */,
 				AEE53D71272383BB004E075C /* View */,
 				AEE53D72272383C4004E075C /* ViewModel */,
@@ -293,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				AEE53D7C272393B9004E075C /* Collections_Ext.swift */,
+				AEE53DCA2725F1FF004E075C /* UIView_Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -398,6 +409,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		AEE53DC52725D97B004E075C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AEE53DC62725D9B6004E075C /* RecipeListCell.swift */,
+				AEE53DC72725D9B6004E075C /* RecipeListCell.xib */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -458,7 +478,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEE53DC92725D9B6004E075C /* RecipeListCell.xib in Resources */,
 				AEE53DC02725BC6B004E075C /* RecipeListVC.xib in Resources */,
+				AEE53DC42725D84D004E075C /* Localizable.strings in Resources */,
 				AEE53D5E27237882004E075C /* LaunchScreen.storyboard in Resources */,
 				AEE53D5B27237882004E075C /* Assets.xcassets in Resources */,
 			);
@@ -513,6 +535,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEE53DCB2725F1FF004E075C /* UIView_Ext.swift in Sources */,
 				AEE53D832723A749004E075C /* RecipeListViewModel.swift in Sources */,
 				AEE53D962724715E004E075C /* RecipeList.swift in Sources */,
 				AEE53D91272449AB004E075C /* AppConfig.swift in Sources */,
@@ -533,6 +556,7 @@
 				AEE53D5127237880004E075C /* SceneDelegate.swift in Sources */,
 				AEE53DC22725CFD9004E075C /* FeedbackMessage.swift in Sources */,
 				AEE53D8E27243BAD004E075C /* NetworkService.swift in Sources */,
+				AEE53DC82725D9B6004E075C /* RecipeListCell.swift in Sources */,
 				AEE53D6D272382D0004E075C /* Recipe.swift in Sources */,
 				AEE53D9427247003004E075C /* RecipeRepository.swift in Sources */,
 				AEE53DA72724DFFC004E075C /* RecipeStorage.swift in Sources */,

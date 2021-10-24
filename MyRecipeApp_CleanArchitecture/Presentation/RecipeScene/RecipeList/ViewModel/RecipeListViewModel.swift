@@ -40,10 +40,10 @@ class RecipeListViewModel: RecipeActionDispatcher {
             fetchRecipes()
         case .refreshRecipes:
             break
-        case .queryRecipes:
+        case .queryRecipes(let query):
             break
-        case .goToDetails:
-            recipeActionHandler.handleAction(action: .GO_TO_RECIPE_DETAILS)
+        case .goToDetails(let recipe):
+            recipeActionHandler.handleAction(action: .GO_TO_RECIPE_DETAILS(recipe: recipe))
         }
     }
     

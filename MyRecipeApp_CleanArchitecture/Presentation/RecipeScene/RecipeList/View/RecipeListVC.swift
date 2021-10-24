@@ -6,10 +6,23 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class RecipeListVC: UIViewController {
 
+    private enum ConstIdentifiers {
+        static let recipeListCell = "RecipeListCell"
+    }
+    
+    // MARK: - VARS
     private(set) var viewModel: RecipeListViewModel
+    /// # RxSwift vars
+    private let disposeBug = DisposeBag()
+    
+    //MARK: - Outlets
+    @IBOutlet weak var recipesTableView: UITableView!
+
     
     init(viewModel: RecipeListViewModel) {
         self.viewModel = viewModel
@@ -22,8 +35,43 @@ class RecipeListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        viewModel.onTriggeredEvent(event: .fetchRecipes)
+        // set up view
+        setUpHeader()
+        setUpObservers()
+        setUpTableView()
         
+        // populate data
+        viewModel.onTriggeredEvent(event: .fetchRecipes)
+    }
+    
+    private func setUpHeader() {
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = NSLocalizedString("AppTitle", comment: "")
+    }
+    
+    private func setUpObservers() {
+        // set up tableView binding observer
+        viewModel.stateObserver.map { newState -> [Recipe] in
+            return newState.recipeList
+        }
+        .distinctUntilChanged()
+        .bind(to: recipesTableView.rx.items(cellIdentifier: ConstIdentifiers.recipeListCell, cellType: RecipeListCell.self)) { (row, item, cell) in
+            cell.setUpCell(recipe: item, delegate: self)
+        }.disposed(by: disposeBug)
+    }
+    
+    private func setUpTableView() {
+        recipesTableView.register(UINib(nibName: ConstIdentifiers.recipeListCell, bundle: nil), forCellReuseIdentifier: ConstIdentifiers.recipeListCell)
+        recipesTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        recipesTableView.contentInsetAdjustmentBehavior = .never
+    }
+}
+
+//MARK: - Recipe Cell Delegate
+extension RecipeListVC: RecipeCellDelegate {
+    func didTapRecipe(recipe: Recipe) {
+        // show recipe details
+        viewModel.onTriggeredEvent(event: .goToDetails(recipe: recipe))
     }
 }

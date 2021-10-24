@@ -9,7 +9,7 @@ import UIKit
 
 enum RecipeNavActions {
     case POP
-    case GO_TO_RECIPE_DETAILS
+    case GO_TO_RECIPE_DETAILS(recipe: Recipe)
 }
 
 /** This protocol must be conformed from Coordinator in order to handle coordinator actions */
@@ -45,6 +45,7 @@ extension RecipeCoordinator: RecipeActionHandler {
         case .POP:
             break
         case .GO_TO_RECIPE_DETAILS:
+            debugPrint("GO_TO_RECIPE_DETAILS Action")
             break
         }
     }

@@ -37,6 +37,6 @@ struct RecipeListState {
 enum RecipeListEvents {
     case fetchRecipes
     case refreshRecipes
-    case queryRecipes
-    case goToDetails
+    case queryRecipes(query: String)
+    case goToDetails(recipe: Recipe)
 }
