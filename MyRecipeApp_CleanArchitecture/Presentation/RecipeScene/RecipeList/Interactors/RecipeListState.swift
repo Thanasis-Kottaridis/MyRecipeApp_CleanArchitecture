@@ -9,18 +9,27 @@ import Foundation
 
 struct RecipeListState {
     let isLoading: Bool
-    let recipeList: [RecipeList]
+    let recipeList: [Recipe]
+    let feedBack: FeedbackMessage?
     // TODO: - Add Search properties here.
     
-    init(isLoading: Bool = false, recipeList: [RecipeList] = []){
+    init(isLoading: Bool = false,
+         recipeList: [Recipe] = [],
+         feedBack: FeedbackMessage? = nil
+    ){
         self.isLoading = isLoading
         self.recipeList = recipeList
+        self.feedBack = feedBack
     }
     
-    func copy(isLoading: Bool? = nil, recipeList: [RecipeList]? = nil) -> RecipeListState {
+    func copy(isLoading: Bool? = nil,
+              recipeList: [Recipe]? = nil,
+              feedBack: FeedbackMessage? = nil
+    ) -> RecipeListState {
         return RecipeListState (
             isLoading: isLoading ?? self.isLoading,
-            recipeList: recipeList ?? self.recipeList
+            recipeList: recipeList ?? self.recipeList,
+            feedBack: feedBack ?? self.feedBack
         )
     }
 }

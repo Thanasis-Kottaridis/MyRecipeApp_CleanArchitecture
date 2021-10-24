@@ -23,5 +23,7 @@ class RecipeListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        viewModel.onTriggeredEvent(event: .fetchRecipes)
+        
     }
 }

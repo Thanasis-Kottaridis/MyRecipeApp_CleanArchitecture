@@ -28,6 +28,10 @@ private struct RecipeStorageProviderKey: InjectionKey {
     static var currentValue: RecipeStorage = CoreDataRecipeStorageImpl()
 }
 
+private struct RecipeListUseCaseKey: InjectionKey {
+    static var currentValue: RecipeListUseCase = RecipeListUseCaseImpl()
+}
+
 /**
  For every Injected Value we have to create a computed property of its Provider in order to have access on getting and setting method
  **Self:** Here referring to the working Extension
@@ -53,5 +57,10 @@ extension InjectedValues {
     var recipeStorageProvider: RecipeStorage {
         get { Self[RecipeStorageProviderKey.self] }
         set { Self[RecipeStorageProviderKey.self] = newValue }
+    }
+    
+    var recipeListUseCase: RecipeListUseCase {
+        get { Self[RecipeListUseCaseKey.self] }
+        set { Self[RecipeListUseCaseKey.self] = newValue }
     }
 }
