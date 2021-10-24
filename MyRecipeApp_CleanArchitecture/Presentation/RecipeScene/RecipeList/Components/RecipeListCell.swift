@@ -49,12 +49,21 @@ class RecipeListCell: UITableViewCell {
             return
         }
         
-        photosProvider.fetchImage(for: thumbnailUrl)
-        {[weak self] image in
-            self?.thumbnail.image = image
-        } errorCompletion: {[weak self] _ in
-            self?.thumbnail.image = UIImage(named: "no_image_available")
+        if let image = photosProvider.getCachedImage(for: thumbnailUrl) {
+            debugPrint("fetched from cache: \(thumbnailUrl)")
+            self.thumbnail.image = image
+
+        } else {
+            photosProvider.fetchImage(for: thumbnailUrl)
+            {[weak self] image in
+                debugPrint("fetched from network: \(thumbnailUrl)")
+                self?.thumbnail.image = image
+                self?.photosProvider.cacheImage(image: image, for: thumbnailUrl)
+            } errorCompletion: {[weak self] _ in
+                self?.thumbnail.image = UIImage(named: "no_image_available")
+            }
         }
+        
 
 
     }

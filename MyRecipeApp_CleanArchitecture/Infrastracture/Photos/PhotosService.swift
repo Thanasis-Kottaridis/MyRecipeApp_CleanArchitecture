@@ -15,11 +15,16 @@ protocol PhotosService {
                     errorCompletion: @escaping (Error) -> Void)
     
     func cacheImage(image: Image, for url: String)
-    func getCachedImage(for url: String) -> Image
+    func getCachedImage(for url: String) -> Image?
     func clearCachedImage(for url: String)
 }
 
 class PhotosProvider: PhotosService {
+    
+    private var imageCache = AutoPurgingImageCache(
+        memoryCapacity: 100_000_000,
+        preferredMemoryUsageAfterPurge: 60_000_000
+    )
     
     func fetchImage(for url: String,
                     completion: @escaping (Image) -> Void,
@@ -35,15 +40,14 @@ class PhotosProvider: PhotosService {
     }
     
     func cacheImage(image: Image, for url: String) {
-        
+        imageCache.add(image, withIdentifier: url)
     }
     
-    func getCachedImage(for url: String) -> Image {
-        return Image()
+    func getCachedImage(for url: String) -> Image? {
+        return imageCache.image(withIdentifier: url)
     }
     
     func clearCachedImage(for url: String) {
-        
+        imageCache.removeImage(withIdentifier: url)
     }
-    
 }
