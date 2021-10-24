@@ -19,7 +19,5 @@ struct NetworkProvider {
         return Session(configuration: configuration)
     }()
     
-    
-    
     // TODO: - Add more implementation
 }

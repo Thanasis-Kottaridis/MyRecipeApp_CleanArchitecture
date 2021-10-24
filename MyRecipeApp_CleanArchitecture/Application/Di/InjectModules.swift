@@ -13,8 +13,8 @@ private struct AppConfigKey: InjectionKey {
 }
 
 /**
-    We create a NetworkProviderKey class that is responsible for instantiating NetworkProvider Key
-    and conforms Injection Key protocol
+ We create a NetworkProviderKey class that is responsible for instantiating NetworkProvider Key
+ and conforms Injection Key protocol
  */
 private struct NetworkProviderKey: InjectionKey {
     static var currentValue: NetworkProvider = NetworkProvider()
@@ -24,10 +24,14 @@ private struct RecipeRepositoryKey: InjectionKey {
     static var currentValue: RecipeRepository = RecipeRepositoryImpl()
 }
 
+private struct RecipeStorageProviderKey: InjectionKey {
+    static var currentValue: RecipeStorage = CoreDataRecipeStorageImpl()
+}
+
 /**
-    For every Injected Value we have to create a computed property of its Provider in order to have access on getting and setting method
-    **Self:** Here referring to the working Extension
-    **Provider.self:** here provides Provider type (that conforms InjectionKey) to InjectedValues key subscript.
+ For every Injected Value we have to create a computed property of its Provider in order to have access on getting and setting method
+ **Self:** Here referring to the working Extension
+ **Provider.self:** here provides Provider type (that conforms InjectionKey) to InjectedValues key subscript.
  */
 extension InjectedValues {
     
@@ -44,5 +48,10 @@ extension InjectedValues {
     var recipeRepository: RecipeRepository {
         get { Self[RecipeRepositoryKey.self]}
         set { Self[RecipeRepositoryKey.self] = newValue }
+    }
+    
+    var recipeStorageProvider: RecipeStorage {
+        get { Self[RecipeStorageProviderKey.self] }
+        set { Self[RecipeStorageProviderKey.self] = newValue }
     }
 }

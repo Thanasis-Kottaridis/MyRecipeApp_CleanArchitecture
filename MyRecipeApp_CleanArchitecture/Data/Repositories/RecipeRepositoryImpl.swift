@@ -7,10 +7,14 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 final class RecipeRepositoryImpl: RecipeRepository {
     
-    let sessionManager: Session = InjectedValues[\.networkProvider].manager
+    @Injected(\.recipeStorageProvider)
+    private var cache: RecipeStorage
+    private let sessionManager: Session = InjectedValues[\.networkProvider].manager
+    
     
     func fetchRecipes(
         cached: @escaping ([Recipe]) -> Void,
@@ -18,10 +22,30 @@ final class RecipeRepositoryImpl: RecipeRepository {
         errorCompletion: @escaping (AFError)-> Void
     ) {
         
-        let _ = sessionManager.request(RecipeApi.fetchRecipeList)
-            .validateResponseWrapper(fromType: [Recipe].self,
-                                     completion: completion,
-                                     errorCompletion: errorCompletion)
-    
+        cache.getResponse {[weak self] result in
+            switch result {
+            case .success(let recipeList):
+                debugPrint("Data Retrieved from storage")
+                cached(recipeList)
+            case .failure(let error):
+                debugPrint("Fail to retrieve Recipe from storage: \(error.localizedDescription)")
+                // fetch recipe from server
+                guard let self = self else { return }
+                
+                // extended completion to store data locally
+                let _completion: (([Recipe]) -> Void) = { recipeList in
+                    // cache response to local storage
+                    self.cache.save(response: recipeList)
+                    // perform completion
+                    completion(recipeList)
+                }
+                
+                let _ = self.sessionManager.request(RecipeApi.fetchRecipeList)
+                    .validateResponseWrapper(
+                        fromType: [Recipe].self,
+                        completion: _completion,
+                        errorCompletion: errorCompletion)
+            }
+        }
     }
 }

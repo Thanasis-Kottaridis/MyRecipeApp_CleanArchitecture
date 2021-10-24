@@ -32,6 +32,10 @@
 		AEE53D9A27247401004E075C /* RecipeRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D9927247401004E075C /* RecipeRepositoryImpl.swift */; };
 		AEE53D9C272474F6004E075C /* RecipeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D9B272474F6004E075C /* RecipeApi.swift */; };
 		AEE53DA02724BBDF004E075C /* AFDataRequest_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D9F2724BBDF004E075C /* AFDataRequest_Ext.swift */; };
+		AEE53DA42724D990004E075C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53DA32724D990004E075C /* CoreDataManager.swift */; };
+		AEE53DA72724DFFC004E075C /* RecipeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53DA62724DFFC004E075C /* RecipeStorage.swift */; };
+		AEE53DA92724E2C5004E075C /* CoreDataRecipeStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53DA82724E2C5004E075C /* CoreDataRecipeStorageImpl.swift */; };
+		AEE53DAC27257626004E075C /* RecipeEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53DAB27257626004E075C /* RecipeEntity+Mapping.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +68,10 @@
 		AEE53D9927247401004E075C /* RecipeRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepositoryImpl.swift; sourceTree = "<group>"; };
 		AEE53D9B272474F6004E075C /* RecipeApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeApi.swift; sourceTree = "<group>"; };
 		AEE53D9F2724BBDF004E075C /* AFDataRequest_Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFDataRequest_Ext.swift; sourceTree = "<group>"; };
+		AEE53DA32724D990004E075C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		AEE53DA62724DFFC004E075C /* RecipeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStorage.swift; sourceTree = "<group>"; };
+		AEE53DA82724E2C5004E075C /* CoreDataRecipeStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRecipeStorageImpl.swift; sourceTree = "<group>"; };
+		AEE53DAB27257626004E075C /* RecipeEntity+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeEntity+Mapping.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +170,7 @@
 		AEE53D68272381F7004E075C /* LocalStorage */ = {
 			isa = PBXGroup;
 			children = (
+				AEE53DA52724DF20004E075C /* RecipeStorage */,
 				AEE53D6927238217004E075C /* CoreDataStorage */,
 			);
 			path = LocalStorage;
@@ -170,6 +179,7 @@
 		AEE53D6927238217004E075C /* CoreDataStorage */ = {
 			isa = PBXGroup;
 			children = (
+				AEE53DA32724D990004E075C /* CoreDataManager.swift */,
 				AEE53D5727237880004E075C /* MyRecipeApp_CleanArchitecture.xcdatamodeld */,
 			);
 			path = CoreDataStorage;
@@ -337,6 +347,24 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		AEE53DA52724DF20004E075C /* RecipeStorage */ = {
+			isa = PBXGroup;
+			children = (
+				AEE53DA62724DFFC004E075C /* RecipeStorage.swift */,
+				AEE53DA82724E2C5004E075C /* CoreDataRecipeStorageImpl.swift */,
+				AEE53DAA2725758F004E075C /* EntityMapping */,
+			);
+			path = RecipeStorage;
+			sourceTree = "<group>";
+		};
+		AEE53DAA2725758F004E075C /* EntityMapping */ = {
+			isa = PBXGroup;
+			children = (
+				AEE53DAB27257626004E075C /* RecipeEntity+Mapping.swift */,
+			);
+			path = EntityMapping;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -456,20 +484,24 @@
 				AEE53D962724715E004E075C /* RecipeList.swift in Sources */,
 				AEE53D91272449AB004E075C /* AppConfig.swift in Sources */,
 				AEE53D8827243AE0004E075C /* InjectModules.swift in Sources */,
+				AEE53DA92724E2C5004E075C /* CoreDataRecipeStorageImpl.swift in Sources */,
 				AEE53D862723AA7F004E075C /* CustomInject.swift in Sources */,
 				AEE53D9A27247401004E075C /* RecipeRepositoryImpl.swift in Sources */,
 				AEE53D8127239A3A004E075C /* RecipeCoordinator.swift in Sources */,
 				AEE53D5327237880004E075C /* ViewController.swift in Sources */,
 				AEE53D9C272474F6004E075C /* RecipeApi.swift in Sources */,
 				AEE53D8A27243AF7004E075C /* InjectCoordinators.swift in Sources */,
+				AEE53DA42724D990004E075C /* CoreDataManager.swift in Sources */,
 				AEE53DA02724BBDF004E075C /* AFDataRequest_Ext.swift in Sources */,
 				AEE53D4F27237880004E075C /* AppDelegate.swift in Sources */,
+				AEE53DAC27257626004E075C /* RecipeEntity+Mapping.swift in Sources */,
 				AEE53D762723848F004E075C /* Coordinator.swift in Sources */,
 				AEE53D5927237880004E075C /* MyRecipeApp_CleanArchitecture.xcdatamodeld in Sources */,
 				AEE53D5127237880004E075C /* SceneDelegate.swift in Sources */,
 				AEE53D8E27243BAD004E075C /* NetworkService.swift in Sources */,
 				AEE53D6D272382D0004E075C /* Recipe.swift in Sources */,
 				AEE53D9427247003004E075C /* RecipeRepository.swift in Sources */,
+				AEE53DA72724DFFC004E075C /* RecipeStorage.swift in Sources */,
 				AEE53D792723908C004E075C /* Storyboarded.swift in Sources */,
 				AEE53D7F272395BF004E075C /* MainCoordinator.swift in Sources */,
 				AEE53D7D272393B9004E075C /* Collections_Ext.swift in Sources */,

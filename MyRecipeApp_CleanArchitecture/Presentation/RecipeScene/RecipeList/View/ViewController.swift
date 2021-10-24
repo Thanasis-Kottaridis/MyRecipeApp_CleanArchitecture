@@ -12,10 +12,12 @@ class ViewController: UIViewController, Storyboarded {
 
     @Injected(\.recipeRepository)
     var recipeRepository: RecipeRepository
+    @Injected(\.recipeStorageProvider)
+    private var cache: RecipeStorage
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         recipeRepository.fetchRecipes { recipeList in
             print("Response completed from cache")
         } completion: { responseResult in
@@ -23,10 +25,6 @@ class ViewController: UIViewController, Storyboarded {
         } errorCompletion: { error in
             print("error called from VC")
         }
-
-
     }
-
-
 }
 
