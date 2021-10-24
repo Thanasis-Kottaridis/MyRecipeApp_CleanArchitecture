@@ -22,12 +22,13 @@ final class RecipeRepositoryImpl: RecipeRepository {
     ) {
         
         cache.getResponse {[weak self] result in
-            switch result {
-            case .success(let recipeList):
-                debugPrint("Data Retrieved from storage")
+            
+            if case let .success(recipeList) = result,
+               !recipeList.isEmpty
+            {
                 cached(recipeList)
-            case .failure(let error):
-                debugPrint("Fail to retrieve Recipe from storage: \(error.localizedDescription)")
+            } else {
+            
                 // fetch recipe from server
                 guard let self = self else { return }
                 
@@ -45,6 +46,16 @@ final class RecipeRepositoryImpl: RecipeRepository {
                         completion: _completion,
                         errorCompletion: errorCompletion)
             }
+            
+            
+            
+//            switch result {
+//            case .success(let recipeList):
+//                debugPrint("Data Retrieved from storage")
+//                cached(recipeList)
+//            case .failure(let error):
+//                debugPrint("Fail to retrieve Recipe from storage: \(error.localizedDescription)")
+//
         }
     }
 }

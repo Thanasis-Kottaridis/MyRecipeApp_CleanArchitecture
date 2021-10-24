@@ -20,6 +20,10 @@ private struct NetworkProviderKey: InjectionKey {
     static var currentValue: NetworkProvider = NetworkProvider()
 }
 
+private struct PhotosProviderKey: InjectionKey {
+    static var currentValue: PhotosService = PhotosProvider()
+}
+
 private struct RecipeRepositoryKey: InjectionKey {
     static var currentValue: RecipeRepository = RecipeRepositoryImpl()
 }
@@ -47,6 +51,11 @@ extension InjectedValues {
     var networkProvider: NetworkProvider {
         get { Self[NetworkProviderKey.self]}
         set { Self[NetworkProviderKey.self] = newValue }
+    }
+    
+    var photosProvider: PhotosService {
+        get { Self[PhotosProviderKey.self]}
+        set { Self[PhotosProviderKey.self] = newValue }
     }
     
     var recipeRepository: RecipeRepository {
