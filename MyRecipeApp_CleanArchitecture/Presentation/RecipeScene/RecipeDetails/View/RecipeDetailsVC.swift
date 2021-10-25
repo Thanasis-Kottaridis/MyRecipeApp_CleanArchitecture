@@ -11,9 +11,11 @@ import RxCocoa
 
 class RecipeDetailsVC: UIViewController {
     
+    // MARK: - Injection
     @Injected(\.photosProvider)
     private var photosProvider: PhotosService
     
+    // MARK: - OUTLETS
     @IBOutlet var headerImageView: UIImageView!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var recipeDescription: UILabel!
@@ -49,6 +51,8 @@ class RecipeDetailsVC: UIViewController {
     }
     
     private func setUpHeader() {
+        
+        // set up navigation bar
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.backItem?.title = nil
     }
@@ -69,13 +73,13 @@ class RecipeDetailsVC: UIViewController {
                 // fetch thumbnail
                 guard let imageId = state.selectedRecipe.image else { return }
                 self?.photosProvider.fetchImage(for: imageId,
-                                                completion: { image in
+                                                   completion: { image in
                     self?.headerImageView.image = image
                 }, errorCompletion: { error in
                     debugPrint(error.localizedDescription)
                     self?.headerImageView.image = UIImage(named: "no_image_available")
                 })
-        }).disposed(by: disposeBug)
+            }).disposed(by: disposeBug)
     }
 }
 

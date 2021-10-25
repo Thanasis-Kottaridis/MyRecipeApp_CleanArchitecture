@@ -22,7 +22,7 @@ class RecipeListVC: UIViewController {
     
     //MARK: - Outlets
     @IBOutlet weak var recipesTableView: UITableView!
-    
+    lazy var searchController: UISearchController = UISearchController()
     
     init(viewModel: RecipeListViewModel) {
         self.viewModel = viewModel
@@ -46,11 +46,17 @@ class RecipeListVC: UIViewController {
     }
     
     private func setUpHeader() {
+        // set up nav bar
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = NSLocalizedString("AppTitle", comment: "")
         navigationController?.navigationBar.backItem?.title = nil
+        
+        // set up search bar
+        searchController.searchBar.placeholder = NSLocalizedString("SearchPlaceholder", comment: "")
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     private func setUpObservers() {
@@ -64,12 +70,23 @@ class RecipeListVC: UIViewController {
             .bind(to: recipesTableView.rx.items(cellIdentifier: ConstIdentifiers.recipeListCell, cellType: RecipeListCell.self)) { (row, item, cell) in
                 cell.setUpCell(recipe: item, delegate: self)
             }.disposed(by: disposeBug)
+        
+        // set up search bar observer
+        /// #sos debounce for 0.5 seconds to avoid unnecessary request while typing
+        searchController.searchBar.rx.text
+            .orEmpty
+            .debounce(.microseconds(500), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe(onNext:{ [weak self] query in
+                self?.viewModel.onTriggeredEvent(event: .queryRecipes(query: query))
+            }).disposed(by: disposeBug)
     }
     
     private func setUpTableView() {
         recipesTableView.register(UINib(nibName: ConstIdentifiers.recipeListCell, bundle: nil), forCellReuseIdentifier: ConstIdentifiers.recipeListCell)
         recipesTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         recipesTableView.contentInsetAdjustmentBehavior = .never
+        recipesTableView.insetsContentViewsToSafeArea = true
     }
     
     private func configureRefreshControl() {

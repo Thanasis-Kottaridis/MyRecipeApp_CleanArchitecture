@@ -77,7 +77,10 @@ class CoreDataRecipeStorageImpl: RecipeStorage {
     func queryRecipes(query: String,
                       completion: @escaping (Result<[Recipe], CoreDataStorageError>) -> Void) {
         let fetchRequest = self.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "name CONTAINS %@", query)
+        if !query.isEmpty{
+            fetchRequest.predicate = NSPredicate(format: "name CONTAINS[cd] %@", query)
+        }
+        
         getResponse(fetchRequest: fetchRequest, completion: completion)
     }
     
