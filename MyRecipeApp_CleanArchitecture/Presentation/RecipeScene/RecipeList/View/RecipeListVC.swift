@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 class RecipeListVC: UIViewController {
-
+    
     private enum ConstIdentifiers {
         static let recipeListCell = "RecipeListCell"
     }
@@ -22,7 +22,7 @@ class RecipeListVC: UIViewController {
     
     //MARK: - Outlets
     @IBOutlet weak var recipesTableView: UITableView!
-
+    
     
     init(viewModel: RecipeListViewModel) {
         self.viewModel = viewModel
@@ -47,18 +47,22 @@ class RecipeListVC: UIViewController {
     private func setUpHeader() {
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
-        title = NSLocalizedString("AppTitle", comment: "")
+        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.title = NSLocalizedString("AppTitle", comment: "")
+        navigationController?.navigationBar.backItem?.title = nil
     }
     
     private func setUpObservers() {
         // set up tableView binding observer
-        viewModel.stateObserver.map { newState -> [Recipe] in
-            return newState.recipeList
-        }
-        .distinctUntilChanged()
-        .bind(to: recipesTableView.rx.items(cellIdentifier: ConstIdentifiers.recipeListCell, cellType: RecipeListCell.self)) { (row, item, cell) in
-            cell.setUpCell(recipe: item, delegate: self)
-        }.disposed(by: disposeBug)
+        viewModel.stateObserver
+            .observe(on: MainScheduler.instance) /// observe on mainThread coz we update UI
+            .map { newState -> [Recipe] in
+                return newState.recipeList
+            }
+            .distinctUntilChanged()
+            .bind(to: recipesTableView.rx.items(cellIdentifier: ConstIdentifiers.recipeListCell, cellType: RecipeListCell.self)) { (row, item, cell) in
+                cell.setUpCell(recipe: item, delegate: self)
+            }.disposed(by: disposeBug)
     }
     
     private func setUpTableView() {

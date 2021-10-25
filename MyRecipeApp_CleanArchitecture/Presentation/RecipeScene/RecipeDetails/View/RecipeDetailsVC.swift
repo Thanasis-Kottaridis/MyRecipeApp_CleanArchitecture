@@ -17,11 +17,15 @@ class RecipeDetailsVC: UIViewController {
     @IBOutlet var headerImageView: UIImageView!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var recipeDescription: UILabel!
+    @IBOutlet var headerViewHeightConstraint: NSLayoutConstraint!
+
 
     // MARK: - VARS
     private(set) var viewModel: RecipeDetailsViewModel
     /// # RxSwift vars
     private let disposeBug = DisposeBag()
+    // Const header height
+    private let CONST_HEADER_HEIGHT: CGFloat = 300
     
     init(viewModel: RecipeDetailsViewModel) {
         self.viewModel = viewModel
@@ -41,16 +45,18 @@ class RecipeDetailsVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        scrollView.setContentOffset(CGPoint(x: 0, y: -(212)), animated: false)
+        scrollView.setContentOffset(CGPoint(x: 0, y: -(CONST_HEADER_HEIGHT)), animated: false)
     }
     
     private func setUpHeader() {
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.backItem?.title = nil
     }
     
     private func setUpScrollView() {
-//        scrollView.contentInsetAdjustmentBehavior = .never
-//        scrollView.contentInset = UIEdgeInsets(top: 212, left: 0, bottom: 0, right: 0)
-//        scrollView.delegate = self
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.contentInset = UIEdgeInsets(top: CONST_HEADER_HEIGHT, left: 0, bottom: 0, right: 0)
+        scrollView.delegate = self
     }
     
     private func setUpObservers() {
@@ -74,5 +80,9 @@ class RecipeDetailsVC: UIViewController {
 }
 
 extension RecipeDetailsVC: UIScrollViewDelegate {
-
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y = -scrollView.contentOffset.y
+        headerViewHeightConstraint.constant = y
+    }
 }

@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecipeDetailsVC" customModule="MyRecipeApp_CleanArchitecture" customModuleProvider="target">
             <connections>
                 <outlet property="headerImageView" destination="zfe-3X-bbu" id="dwK-bX-xya"/>
+                <outlet property="headerViewHeightConstraint" destination="d42-tm-2B1" id="7gX-MQ-vxS"/>
                 <outlet property="recipeDescription" destination="Jng-mN-Ela" id="oIm-bq-6xR"/>
                 <outlet property="scrollView" destination="7GJ-XH-QX6" id="9pk-Ry-tIR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,30 +23,30 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fF0-22-j3i" userLabel="StretchyHeader">
+                    <rect key="frame" x="0.0" y="44" width="414" height="300"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zfe-3X-bbu">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="zfe-3X-bbu" firstAttribute="top" secondItem="fF0-22-j3i" secondAttribute="top" id="HTU-Ha-PGN"/>
+                        <constraint firstAttribute="trailing" secondItem="zfe-3X-bbu" secondAttribute="trailing" id="VdC-Kq-LQS"/>
+                        <constraint firstAttribute="height" constant="300" id="d42-tm-2B1"/>
+                        <constraint firstItem="zfe-3X-bbu" firstAttribute="leading" secondItem="fF0-22-j3i" secondAttribute="leading" id="rZn-0L-rOM"/>
+                        <constraint firstAttribute="bottom" secondItem="zfe-3X-bbu" secondAttribute="bottom" id="xNf-0C-b2g"/>
+                    </constraints>
+                </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7GJ-XH-QX6">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kkb-ea-M3u" userLabel="scrollingView">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fF0-22-j3i" userLabel="StretchyHeader">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="212"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zfe-3X-bbu">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="212"/>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <constraints>
-                                        <constraint firstItem="zfe-3X-bbu" firstAttribute="top" secondItem="fF0-22-j3i" secondAttribute="top" id="HTU-Ha-PGN"/>
-                                        <constraint firstAttribute="trailing" secondItem="zfe-3X-bbu" secondAttribute="trailing" id="VdC-Kq-LQS"/>
-                                        <constraint firstAttribute="height" constant="212" id="d42-tm-2B1"/>
-                                        <constraint firstItem="zfe-3X-bbu" firstAttribute="leading" secondItem="fF0-22-j3i" secondAttribute="leading" id="rZn-0L-rOM"/>
-                                        <constraint firstAttribute="bottom" secondItem="zfe-3X-bbu" secondAttribute="bottom" id="xNf-0C-b2g"/>
-                                    </constraints>
-                                </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jng-mN-Ela" userLabel="RecipeDescription">
-                                    <rect key="frame" x="24" y="212" width="366" height="122"/>
+                                    <rect key="frame" x="24" y="24" width="366" height="122"/>
                                     <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
@@ -54,12 +55,9 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="fF0-22-j3i" firstAttribute="top" secondItem="Kkb-ea-M3u" secondAttribute="top" id="JLg-V5-tYZ"/>
-                                <constraint firstItem="fF0-22-j3i" firstAttribute="leading" secondItem="Kkb-ea-M3u" secondAttribute="leading" id="Jkd-IM-2HZ"/>
+                                <constraint firstItem="Jng-mN-Ela" firstAttribute="top" secondItem="Kkb-ea-M3u" secondAttribute="top" constant="24" id="Opl-uy-TiX"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Jng-mN-Ela" secondAttribute="bottom" constant="24" id="PKh-QW-dqi"/>
                                 <constraint firstItem="Jng-mN-Ela" firstAttribute="leading" secondItem="Kkb-ea-M3u" secondAttribute="leading" constant="24" id="Sx6-Pc-8s3"/>
-                                <constraint firstAttribute="trailing" secondItem="fF0-22-j3i" secondAttribute="trailing" id="X0x-Wb-IeU"/>
-                                <constraint firstItem="Jng-mN-Ela" firstAttribute="top" secondItem="fF0-22-j3i" secondAttribute="bottom" id="c3T-xg-qnc"/>
                                 <constraint firstAttribute="trailing" secondItem="Jng-mN-Ela" secondAttribute="trailing" constant="24" id="fgI-zL-IBy"/>
                             </constraints>
                         </view>
@@ -78,9 +76,12 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="7GJ-XH-QX6" secondAttribute="bottom" id="Eiy-4u-0uu"/>
+                <constraint firstItem="fF0-22-j3i" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="GGs-mV-fAG"/>
+                <constraint firstItem="fF0-22-j3i" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="MZP-1Y-eso"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7GJ-XH-QX6" secondAttribute="trailing" id="SBQ-A9-4OM"/>
-                <constraint firstItem="7GJ-XH-QX6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ati-pE-oUz"/>
+                <constraint firstItem="7GJ-XH-QX6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ati-pE-oUz"/>
                 <constraint firstItem="7GJ-XH-QX6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ucg-zG-rtn"/>
+                <constraint firstItem="fF0-22-j3i" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vcZ-As-2YH"/>
             </constraints>
             <point key="canvasLocation" x="139" y="115"/>
         </view>
