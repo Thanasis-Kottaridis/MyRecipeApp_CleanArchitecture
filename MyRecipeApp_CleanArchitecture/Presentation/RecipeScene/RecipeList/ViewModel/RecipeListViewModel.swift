@@ -61,8 +61,7 @@ class RecipeListViewModel: RecipeActionDispatcher {
                                            type: .success)
             self.state.accept(self.state.value.copy(
                 isLoading: false,
-                recipeList: recipeList,
-                feedBack: feedback))
+                recipeList: recipeList))
             self.onTriggeredEvent(event: .presentFeedback(message: feedback))
             debugPrint(feedback.message)
         } completion: { [weak self]  recipeList in
@@ -72,8 +71,7 @@ class RecipeListViewModel: RecipeActionDispatcher {
                                            type: .success)
             self.state.accept(self.state.value.copy(
                 isLoading: false,
-                recipeList: recipeList,
-                feedBack: feedback))
+                recipeList: recipeList))
             
             self.onTriggeredEvent(event: .presentFeedback(message: feedback))
             debugPrint(feedback.message)
@@ -81,10 +79,7 @@ class RecipeListViewModel: RecipeActionDispatcher {
         } errorCompletion: { [weak self] errorMessage in
             guard let self = self else { return }
             
-            self.state.accept(self.state.value.copy(
-                isLoading: false,
-                feedBack: errorMessage
-            ))
+            self.state.accept(self.state.value.copy(isLoading: false))
             self.onTriggeredEvent(event: .presentFeedback(message: errorMessage))
             debugPrint(errorMessage.message)
         }
@@ -96,12 +91,10 @@ class RecipeListViewModel: RecipeActionDispatcher {
         useCase.queryRecipes(query: query) { recipeList in
             self.state.accept(self.state.value.copy(
                 isLoading: false,
-                recipeList: recipeList,
-                feedBack: nil))
+                recipeList: recipeList))
         } errorCompletion: { errorMessage in
             self.state.accept(self.state.value.copy(
-                isLoading: false,
-                feedBack: errorMessage
+                isLoading: false
             ))
             
             self.onTriggeredEvent(event: .presentFeedback(message: errorMessage))

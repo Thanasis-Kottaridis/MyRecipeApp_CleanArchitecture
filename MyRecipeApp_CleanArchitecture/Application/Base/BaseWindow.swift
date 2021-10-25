@@ -25,7 +25,7 @@ class BaseWindow: UIWindow {
         }
     }
     
-    func resetTimer(freeze: Bool = false) {
+    func resetTimer() {
         // set up timer
         print("....RESET TIMER ENTER")
         presentableMessageTimeCounter = 0
@@ -36,6 +36,16 @@ class BaseWindow: UIWindow {
     }
     
     func presentingFeedbackMessage(feedBack: FeedbackMessage) {
+        
+        // FIXME: - Temp fix for handling presentation of multiple messages
+        if messageView != nil {
+            dismissingFeedbackMessage {[weak self] in
+                self?.resetTimer()
+                self?.presentingFeedbackMessage(feedBack: feedBack)
+            }
+            return
+        }
+        
         messageView = FeedbackMessageView()
         messageView?.setUpView(message: feedBack)
         
@@ -59,7 +69,7 @@ class BaseWindow: UIWindow {
         animator.startAnimation()
     }
     
-    func dismissingFeedbackMessage() {
+    func dismissingFeedbackMessage(completion: (()-> Void)? = nil) {
         guard let messageView = messageView else {
             return
         }
@@ -80,6 +90,7 @@ class BaseWindow: UIWindow {
         dismissAnimator.addCompletion { [weak self] _ in
             self?.messageView?.removeFromSuperview()
             self?.messageView = nil
+            completion?()
         }
         
         shrinkAnimator.startAnimation()
