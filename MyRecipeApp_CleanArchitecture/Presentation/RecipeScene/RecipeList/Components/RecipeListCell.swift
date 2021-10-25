@@ -63,9 +63,5 @@ class RecipeListCell: UITableViewCell {
                 self?.thumbnail.image = UIImage(named: "no_image_available")
             }
         }
-        
-
-
     }
-
 }

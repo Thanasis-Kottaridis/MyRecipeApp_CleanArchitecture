@@ -8,12 +8,12 @@
 import Foundation
 
 struct Recipe: Codable, Equatable {
-    let id: Int?
-    let name: String?
-    let price: String?
-    let thumbnail: String?
-    let image: String?
-    let description: String?
+    var id: Int?
+    var name: String?
+    var price: String?
+    var thumbnail: String?
+    var image: String?
+    var description: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "id"

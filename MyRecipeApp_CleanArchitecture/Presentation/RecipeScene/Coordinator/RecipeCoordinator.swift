@@ -31,7 +31,6 @@ class RecipeCoordinator: Coordinator {
     }
     
     func start() {
-        //
         let recipeListViewModel = RecipeListViewModel(recipeActionHandler: self)
         let vc = RecipeListVC(viewModel: recipeListViewModel)
         navigationController.pushViewController(vc, animated: false)
@@ -44,9 +43,10 @@ extension RecipeCoordinator: RecipeActionHandler {
         switch action {
         case .POP:
             break
-        case .GO_TO_RECIPE_DETAILS:
-            debugPrint("GO_TO_RECIPE_DETAILS Action")
-            break
+        case .GO_TO_RECIPE_DETAILS(let recipe):
+            let viewModel = RecipeDetailsViewModel(recipe: recipe, recipeActionHandler: self)
+            let vc = RecipeDetailsVC(viewModel: viewModel)
+            navigationController.pushViewController(vc, animated: true)
         }
     }
 }
