@@ -37,8 +37,10 @@ class CoreDataRecipeStorageImpl: RecipeStorage {
                     recipeList.append($0.toDto())
                 }
                 
+                debugPrint("total recipes in storage: \(recipeList.count)")
                 completion(.success(recipeList))
             } catch {
+                debugPrint("fail to retrieve recipes from storage")
                 completion(.failure(CoreDataStorageError.readError(error)))
             }
         }

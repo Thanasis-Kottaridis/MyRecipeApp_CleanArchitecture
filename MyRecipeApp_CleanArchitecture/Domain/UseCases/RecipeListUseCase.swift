@@ -10,6 +10,7 @@ import Foundation
 protocol RecipeListUseCase {
         
     func execute(
+        forceReload: Bool,
         cached: @escaping ([Recipe]) -> Void,
         completion: @escaping ([Recipe]) -> Void,
         errorCompletion: @escaping (FeedbackMessage)-> Void
@@ -28,11 +29,13 @@ final class RecipeListUseCaseImpl: RecipeListUseCase {
     private var recipeRepository: RecipeRepository
     
     func execute(
+        forceReload: Bool,
         cached: @escaping ([Recipe]) -> Void,
         completion: @escaping ([Recipe]) -> Void,
         errorCompletion: @escaping (FeedbackMessage) -> Void
     ) {
         recipeRepository.fetchRecipes(
+            forceReload: forceReload,
             cached: cached,
             completion: completion,
             errorCompletion: { error in

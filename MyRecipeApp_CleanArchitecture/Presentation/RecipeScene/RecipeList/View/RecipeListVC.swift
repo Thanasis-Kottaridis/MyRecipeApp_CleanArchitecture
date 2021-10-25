@@ -39,6 +39,7 @@ class RecipeListVC: UIViewController {
         setUpHeader()
         setUpObservers()
         setUpTableView()
+        configureRefreshControl()
         
         // populate data
         viewModel.onTriggeredEvent(event: .fetchRecipes)
@@ -69,6 +70,17 @@ class RecipeListVC: UIViewController {
         recipesTableView.register(UINib(nibName: ConstIdentifiers.recipeListCell, bundle: nil), forCellReuseIdentifier: ConstIdentifiers.recipeListCell)
         recipesTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         recipesTableView.contentInsetAdjustmentBehavior = .never
+    }
+    
+    private func configureRefreshControl() {
+        recipesTableView.refreshControl = UIRefreshControl()
+        recipesTableView.refreshControl?.addTarget(self, action:
+                                                #selector(handleRefreshControl), for: .valueChanged)
+    }
+    
+    @objc func handleRefreshControl() {
+        viewModel.onTriggeredEvent(event: .refreshRecipes)
+        recipesTableView.refreshControl?.endRefreshing()
     }
 }
 

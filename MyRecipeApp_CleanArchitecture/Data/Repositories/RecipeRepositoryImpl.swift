@@ -16,46 +16,50 @@ final class RecipeRepositoryImpl: RecipeRepository {
     
     
     func fetchRecipes(
+        forceReload: Bool,
         cached: @escaping ([Recipe]) -> Void,
         completion: @escaping ([Recipe]) -> Void,
         errorCompletion: @escaping (Error?)-> Void
     ) {
         
+        // fetch from network if forceReload required
+        if forceReload {
+            self.fetchRecipesFromServer(completion: completion, errorCompletion: errorCompletion)
+            return
+        }
+        
         cache.getResponse {[weak self] result in
-            
             if case let .success(recipeList) = result,
-               !recipeList.isEmpty
-            {
+               !recipeList.isEmpty {
                 cached(recipeList)
             } else {
-            
-                // fetch recipe from server
-                guard let self = self else { return }
-                
-                // extended completion to store data locally
-                let _completion: (([Recipe]) -> Void) = { recipeList in
-                    // cache response to local storage
-                    self.cache.save(response: recipeList)
-                    // perform completion
-                    completion(recipeList)
-                }
-                
-                let _ = self.sessionManager.request(RecipeApi.fetchRecipeList)
-                    .validateResponseWrapper(
-                        fromType: [Recipe].self,
-                        completion: _completion,
-                        errorCompletion: errorCompletion)
+                self?.fetchRecipesFromServer(completion: completion, errorCompletion: errorCompletion)
             }
-            
-            
-            
-//            switch result {
-//            case .success(let recipeList):
-//                debugPrint("Data Retrieved from storage")
-//                cached(recipeList)
-//            case .failure(let error):
-//                debugPrint("Fail to retrieve Recipe from storage: \(error.localizedDescription)")
-//
         }
     }
+    
+    /// fetch recipe from server
+    private func fetchRecipesFromServer(
+        completion: @escaping ([Recipe]) -> Void,
+        errorCompletion: @escaping (Error?)-> Void) {
+            
+            // extended completion to store data locally
+            let _completion: (([Recipe]) -> Void) = { recipeList in
+                // cache response to local storage
+                self.cache.save(response: recipeList)
+                // perform completion
+                completion(recipeList)
+            }
+            
+            let _ = self.sessionManager.request(RecipeApi.fetchRecipeList)
+                .validateResponseWrapper(
+                    fromType: [Recipe].self,
+                    completion: _completion,
+                    errorCompletion: errorCompletion)
+        }
 }
+
+
+
+
+

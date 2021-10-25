@@ -39,7 +39,7 @@ class RecipeListViewModel: RecipeActionDispatcher {
         case .fetchRecipes:
             fetchRecipes()
         case .refreshRecipes:
-            break
+            fetchRecipes(forceReload: true)
         case .queryRecipes(let query):
             break
         case .goToDetails(let recipe):
@@ -47,11 +47,12 @@ class RecipeListViewModel: RecipeActionDispatcher {
         }
     }
     
-    private func fetchRecipes() {
+    private func fetchRecipes(forceReload: Bool = false) {
         // set state to loading state
         self.state.accept(state.value.copy(isLoading: true))
         
-        useCase.execute { [weak self] recipeList in
+        useCase.execute (forceReload: forceReload)
+        { [weak self] recipeList in
             guard let self = self else { return }
 
             self.state.accept(self.state.value.copy(
