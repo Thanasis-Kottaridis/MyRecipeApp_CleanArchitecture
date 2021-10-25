@@ -83,6 +83,10 @@ extension RecipeDetailsVC: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = -scrollView.contentOffset.y
-        headerViewHeightConstraint.constant = y
+        if y < 0 {
+            headerViewHeightConstraint.constant = 0
+        } else {
+            headerViewHeightConstraint.constant = y
+        }
     }
 }
