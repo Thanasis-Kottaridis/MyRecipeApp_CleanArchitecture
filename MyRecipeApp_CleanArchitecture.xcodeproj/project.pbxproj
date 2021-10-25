@@ -12,6 +12,8 @@
 		AEBA9EB727271288000D2490 /* FeedbackMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA9EB627271288000D2490 /* FeedbackMessageView.swift */; };
 		AEBA9EB9272712DE000D2490 /* FeedbackMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEBA9EB8272712DE000D2490 /* FeedbackMessageView.xib */; };
 		AEBA9EBE2727529D000D2490 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA9EBD2727529D000D2490 /* KeyboardLayoutConstraint.swift */; };
+		AEBA9EC627275C04000D2490 /* MyRecipeApp_CleanArchitectureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA9EC527275C04000D2490 /* MyRecipeApp_CleanArchitectureTests.swift */; };
+		AEBA9ECF27275DEC000D2490 /* RecipeListUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA9ECE27275DEC000D2490 /* RecipeListUseCaseTest.swift */; };
 		AEE53D4F27237880004E075C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D4E27237880004E075C /* AppDelegate.swift */; };
 		AEE53D5927237880004E075C /* MyRecipeApp_CleanArchitecture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AEE53D5727237880004E075C /* MyRecipeApp_CleanArchitecture.xcdatamodeld */; };
 		AEE53D5B27237882004E075C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEE53D5A27237882004E075C /* Assets.xcassets */; };
@@ -53,6 +55,16 @@
 		AEE53DDA27262621004E075C /* RecipeDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEE53DD827262621004E075C /* RecipeDetailsVC.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		AEBA9EC727275C04000D2490 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AEE53D4327237880004E075C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AEE53D4A27237880004E075C;
+			remoteInfo = MyRecipeApp_CleanArchitecture;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		20252B6895F4E2C715D3D1D7 /* Pods_MyRecipeApp_CleanArchitecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyRecipeApp_CleanArchitecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FFDDF9B122E9524539D95F4 /* Pods-MyRecipeApp_CleanArchitecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRecipeApp_CleanArchitecture.release.xcconfig"; path = "Target Support Files/Pods-MyRecipeApp_CleanArchitecture/Pods-MyRecipeApp_CleanArchitecture.release.xcconfig"; sourceTree = "<group>"; };
@@ -61,6 +73,9 @@
 		AEBA9EB627271288000D2490 /* FeedbackMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackMessageView.swift; sourceTree = "<group>"; };
 		AEBA9EB8272712DE000D2490 /* FeedbackMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackMessageView.xib; sourceTree = "<group>"; };
 		AEBA9EBD2727529D000D2490 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
+		AEBA9EC327275C04000D2490 /* MyRecipeApp_CleanArchitectureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyRecipeApp_CleanArchitectureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEBA9EC527275C04000D2490 /* MyRecipeApp_CleanArchitectureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipeApp_CleanArchitectureTests.swift; sourceTree = "<group>"; };
+		AEBA9ECE27275DEC000D2490 /* RecipeListUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListUseCaseTest.swift; sourceTree = "<group>"; };
 		AEE53D4B27237880004E075C /* MyRecipeApp_CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRecipeApp_CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE53D4E27237880004E075C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEE53D5827237880004E075C /* MyRecipeApp_CleanArchitecture.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyRecipeApp_CleanArchitecture.xcdatamodel; sourceTree = "<group>"; };
@@ -105,6 +120,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AEBA9EC027275C04000D2490 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AEE53D4827237880004E075C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -142,10 +164,36 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		AEBA9EC427275C04000D2490 /* MyRecipeApp_CleanArchitectureTests */ = {
+			isa = PBXGroup;
+			children = (
+				AEBA9ECC27275D7E000D2490 /* Domain */,
+				AEBA9EC527275C04000D2490 /* MyRecipeApp_CleanArchitectureTests.swift */,
+			);
+			path = MyRecipeApp_CleanArchitectureTests;
+			sourceTree = "<group>";
+		};
+		AEBA9ECC27275D7E000D2490 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AEBA9ECD27275D88000D2490 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		AEBA9ECD27275D88000D2490 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				AEBA9ECE27275DEC000D2490 /* RecipeListUseCaseTest.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		AEE53D4227237880004E075C = {
 			isa = PBXGroup;
 			children = (
 				AEE53D4D27237880004E075C /* MyRecipeApp_CleanArchitecture */,
+				AEBA9EC427275C04000D2490 /* MyRecipeApp_CleanArchitectureTests */,
 				AEE53D4C27237880004E075C /* Products */,
 				9A16CFA1E2139314451BCF67 /* Pods */,
 				03FCA11A07D49344A1398BB5 /* Frameworks */,
@@ -156,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				AEE53D4B27237880004E075C /* MyRecipeApp_CleanArchitecture.app */,
+				AEBA9EC327275C04000D2490 /* MyRecipeApp_CleanArchitectureTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -485,6 +534,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AEBA9EC227275C04000D2490 /* MyRecipeApp_CleanArchitectureTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEBA9EC927275C04000D2490 /* Build configuration list for PBXNativeTarget "MyRecipeApp_CleanArchitectureTests" */;
+			buildPhases = (
+				AEBA9EBF27275C04000D2490 /* Sources */,
+				AEBA9EC027275C04000D2490 /* Frameworks */,
+				AEBA9EC127275C04000D2490 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AEBA9EC827275C04000D2490 /* PBXTargetDependency */,
+			);
+			name = MyRecipeApp_CleanArchitectureTests;
+			productName = MyRecipeApp_CleanArchitectureTests;
+			productReference = AEBA9EC327275C04000D2490 /* MyRecipeApp_CleanArchitectureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		AEE53D4A27237880004E075C /* MyRecipeApp_CleanArchitecture */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AEE53D6227237882004E075C /* Build configuration list for PBXNativeTarget "MyRecipeApp_CleanArchitecture" */;
@@ -514,6 +581,10 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					AEBA9EC227275C04000D2490 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = AEE53D4A27237880004E075C;
+					};
 					AEE53D4A27237880004E075C = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -533,11 +604,19 @@
 			projectRoot = "";
 			targets = (
 				AEE53D4A27237880004E075C /* MyRecipeApp_CleanArchitecture */,
+				AEBA9EC227275C04000D2490 /* MyRecipeApp_CleanArchitectureTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AEBA9EC127275C04000D2490 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AEE53D4927237880004E075C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -597,6 +676,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AEBA9EBF27275C04000D2490 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEBA9EC627275C04000D2490 /* MyRecipeApp_CleanArchitectureTests.swift in Sources */,
+				AEBA9ECF27275DEC000D2490 /* RecipeListUseCaseTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AEE53D4727237880004E075C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -642,6 +730,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		AEBA9EC827275C04000D2490 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AEE53D4A27237880004E075C /* MyRecipeApp_CleanArchitecture */;
+			targetProxy = AEBA9EC727275C04000D2490 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		AEE53D5C27237882004E075C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -654,6 +750,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AEBA9ECA27275C04000D2490 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cognity.practice.MyRecipeApp-CleanArchitectureTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyRecipeApp_CleanArchitecture.app/MyRecipeApp_CleanArchitecture";
+			};
+			name = Debug;
+		};
+		AEBA9ECB27275C04000D2490 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cognity.practice.MyRecipeApp-CleanArchitectureTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyRecipeApp_CleanArchitecture.app/MyRecipeApp_CleanArchitecture";
+			};
+			name = Release;
+		};
 		AEE53D6027237882004E075C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -829,6 +969,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AEBA9EC927275C04000D2490 /* Build configuration list for PBXNativeTarget "MyRecipeApp_CleanArchitectureTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEBA9ECA27275C04000D2490 /* Debug */,
+				AEBA9ECB27275C04000D2490 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AEE53D4627237880004E075C /* Build configuration list for PBXProject "MyRecipeApp_CleanArchitecture" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
