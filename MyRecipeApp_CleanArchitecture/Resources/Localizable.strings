@@ -7,3 +7,6 @@
 */
 
 "AppTitle" = "My Recipe App";
+"FetchFromStorageFeedback" = "Recipes Fetched from storage";
+"FetchFromNetworkFeedback" = "Recipes Fetched from network";
+"Generic Error" = "Something Went Wrong";

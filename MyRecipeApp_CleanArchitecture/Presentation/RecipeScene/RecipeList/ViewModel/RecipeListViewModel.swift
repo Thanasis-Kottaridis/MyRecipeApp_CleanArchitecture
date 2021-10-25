@@ -41,7 +41,7 @@ class RecipeListViewModel: RecipeActionDispatcher {
         case .refreshRecipes:
             fetchRecipes(forceReload: true)
         case .queryRecipes(let query):
-            break
+            queryRecipes(query: query)
         case .goToDetails(let recipe):
             recipeActionHandler.handleAction(action: .GO_TO_RECIPE_DETAILS(recipe: recipe))
         case .presentFeedback(let message):
@@ -57,7 +57,8 @@ class RecipeListViewModel: RecipeActionDispatcher {
         { [weak self] recipeList in
             guard let self = self else { return }
 
-            let feedback = FeedbackMessage(message: "Message Fetch from storage", type: .success)
+            let feedback = FeedbackMessage(message: NSLocalizedString("FetchFromStorageFeedback", comment: ""),
+                                           type: .success)
             self.state.accept(self.state.value.copy(
                 isLoading: false,
                 recipeList: recipeList,
@@ -67,7 +68,8 @@ class RecipeListViewModel: RecipeActionDispatcher {
         } completion: { [weak self]  recipeList in
             guard let self = self else { return }
 
-            let feedback = FeedbackMessage(message: "Message Fetch from network", type: .success)
+            let feedback = FeedbackMessage(message: NSLocalizedString("FetchFromNetworkFeedback", comment: ""),
+                                           type: .success)
             self.state.accept(self.state.value.copy(
                 isLoading: false,
                 recipeList: recipeList,
@@ -86,6 +88,26 @@ class RecipeListViewModel: RecipeActionDispatcher {
             self.onTriggeredEvent(event: .presentFeedback(message: errorMessage))
             debugPrint(errorMessage.message)
         }
+    }
+    
+    private func queryRecipes(query: String){
+        self.state.accept(state.value.copy(isLoading: true))
+
+        useCase.queryRecipes(query: query) { recipeList in
+            self.state.accept(self.state.value.copy(
+                isLoading: false,
+                recipeList: recipeList,
+                feedBack: nil))
+        } errorCompletion: { errorMessage in
+            self.state.accept(self.state.value.copy(
+                isLoading: false,
+                feedBack: errorMessage
+            ))
+            
+            self.onTriggeredEvent(event: .presentFeedback(message: errorMessage))
+            debugPrint(errorMessage.message)
+        }
+
     }
 }
 

@@ -7,36 +7,13 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 final class RecipeRepositoryImpl: RecipeRepository {
     
     @Injected(\.recipeStorageProvider)
     private var cache: RecipeStorage
     private let sessionManager: Session = InjectedValues[\.networkProvider].manager
-    
-    
-    func fetchRecipes(
-        forceReload: Bool,
-        cached: @escaping ([Recipe]) -> Void,
-        completion: @escaping ([Recipe]) -> Void,
-        errorCompletion: @escaping (Error?)-> Void
-    ) {
-        
-        // fetch from network if forceReload required
-        if forceReload {
-            self.fetchRecipesFromServer(completion: completion, errorCompletion: errorCompletion)
-            return
-        }
-        
-        cache.getResponse {[weak self] result in
-            if case let .success(recipeList) = result,
-               !recipeList.isEmpty {
-                cached(recipeList)
-            } else {
-                self?.fetchRecipesFromServer(completion: completion, errorCompletion: errorCompletion)
-            }
-        }
-    }
     
     /// fetch recipe from server
     private func fetchRecipesFromServer(
@@ -57,6 +34,41 @@ final class RecipeRepositoryImpl: RecipeRepository {
                     completion: _completion,
                     errorCompletion: errorCompletion)
         }
+    
+    func fetchRecipes(
+        forceReload: Bool,
+        cached: @escaping ([Recipe]) -> Void,
+        completion: @escaping ([Recipe]) -> Void,
+        errorCompletion: @escaping (Error?)-> Void
+    ) {
+        
+        // fetch from network if forceReload required
+        if forceReload {
+            self.fetchRecipesFromServer(completion: completion, errorCompletion: errorCompletion)
+            return
+        }
+        
+        cache.getAllRecipes {[weak self] result in
+            if case let .success(recipeList) = result,
+               !recipeList.isEmpty {
+                cached(recipeList)
+            } else {
+                self?.fetchRecipesFromServer(completion: completion, errorCompletion: errorCompletion)
+            }
+        }
+    }
+    
+    func queryRecipes(query: String, completion: @escaping ([Recipe]) -> Void, errorCompletion: @escaping (Error?) -> Void) {
+        cache.queryRecipes(query: query) { result in
+            switch result {
+            case .success(let recipeList):
+                completion(recipeList)
+            case .failure(let error):
+                errorCompletion(error)
+            }
+        }
+    }
+    
 }
 
 

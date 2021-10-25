@@ -17,9 +17,9 @@ class CoreDataRecipeStorageImpl: RecipeStorage {
         return request
     }
     
-    func deleteResponse(in context: NSManagedObjectContext) {
+    private func deleteResponse(in context: NSManagedObjectContext) {
         let request = RecipeListEntity.fetchRequest()
-
+        
         do {
             try context.fetch(request).forEach({ recipe in
                 context.delete(recipe)
@@ -29,11 +29,14 @@ class CoreDataRecipeStorageImpl: RecipeStorage {
         }
     }
     
-    func getResponse(completion: @escaping (Result<[Recipe], CoreDataStorageError>) -> Void) {
+    private func getResponse(
+        fetchRequest: NSFetchRequest<RecipeListEntity>,
+        completion: @escaping (Result<[Recipe], CoreDataStorageError>) -> Void
+    ) {
         coreDataManager.performBackgroundTask { context in
             do {
                 var recipeList: [Recipe] = []
-                try context.fetch(self.fetchRequest()).forEach{
+                try context.fetch(fetchRequest).forEach{
                     recipeList.append($0.toDto())
                 }
                 
@@ -56,7 +59,7 @@ class CoreDataRecipeStorageImpl: RecipeStorage {
                 recipeList.forEach {
                     context.insert($0.toEntity(in: context))
                 }
-
+                
                 // save context in order to store changes.
                 try context.save()
             } catch {
@@ -64,6 +67,18 @@ class CoreDataRecipeStorageImpl: RecipeStorage {
                 debugPrint("CoreData Recipe storage Unresolved error \(error), \((error as NSError).userInfo)")
             }
         }
+    }
+    
+    
+    func getAllRecipes(completion: @escaping (Result<[Recipe], CoreDataStorageError>) -> Void) {
+        getResponse(fetchRequest: fetchRequest(), completion: completion)
+    }
+    
+    func queryRecipes(query: String,
+                      completion: @escaping (Result<[Recipe], CoreDataStorageError>) -> Void) {
+        let fetchRequest = self.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name CONTAINS %@", query)
+        getResponse(fetchRequest: fetchRequest, completion: completion)
     }
     
     

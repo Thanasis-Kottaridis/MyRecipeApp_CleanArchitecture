@@ -7,6 +7,7 @@
 
 import Foundation
 protocol RecipeStorage {
-    func getResponse(completion: @escaping (Result<[Recipe], CoreDataStorageError>) -> Void)
+    func getAllRecipes(completion: @escaping (Result<[Recipe], CoreDataStorageError>) -> Void)
+    func queryRecipes(query:String, completion: @escaping (Result<[Recipe], CoreDataStorageError>) -> Void)
     func save(response: [Recipe])
 }

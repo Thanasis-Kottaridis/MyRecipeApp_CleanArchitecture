@@ -17,6 +17,7 @@ protocol RecipeListUseCase {
     )
     
     func queryRecipes(
+        query: String,
         completion: @escaping ([Recipe]) -> Void,
         errorCompletion: @escaping (FeedbackMessage)-> Void
     )
@@ -48,10 +49,18 @@ final class RecipeListUseCaseImpl: RecipeListUseCase {
     }
     
     func queryRecipes(
+        query: String,
         completion: @escaping ([Recipe]) -> Void,
         errorCompletion: @escaping (FeedbackMessage) -> Void
     ) {
-        // TODO: - Implement query functionality
+        recipeRepository.queryRecipes(query: query,
+                                      completion: completion) { error in
+            let feedbackMessage = FeedbackMessage(
+                message: error?.localizedDescription ?? "Something Went Wrong",
+                type: .error)
+            errorCompletion(feedbackMessage)
+        }
+        
     }
     
 }

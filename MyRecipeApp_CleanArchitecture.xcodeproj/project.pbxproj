@@ -245,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				AEE53D6F2723837A004E075C /* RecipeScene */,
+				AEBA9EB42727111E000D2490 /* Components */,
 				AEE53D7727239073004E075C /* Utils */,
 			);
 			path = Presentation;
@@ -253,7 +254,6 @@
 		AEE53D6F2723837A004E075C /* RecipeScene */ = {
 			isa = PBXGroup;
 			children = (
-				AEBA9EB42727111E000D2490 /* Components */,
 				AEE53D70272383AA004E075C /* Coordinator */,
 				AEE53D73272383D5004E075C /* RecipeList */,
 				AEE53DCF2726253A004E075C /* RecipeDetails */,

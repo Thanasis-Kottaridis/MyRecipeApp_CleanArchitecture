@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Alamofire
 
 protocol RecipeRepository {
     func fetchRecipes(forceReload: Bool,
@@ -14,4 +13,9 @@ protocol RecipeRepository {
                       completion: @escaping ([Recipe])-> Void,
                       errorCompletion: @escaping (Error?)-> Void
     )
+    
+    func queryRecipes(query: String,
+                      completion: @escaping ([Recipe])-> Void,
+                      errorCompletion: @escaping (Error?)-> Void)
+        
 }
