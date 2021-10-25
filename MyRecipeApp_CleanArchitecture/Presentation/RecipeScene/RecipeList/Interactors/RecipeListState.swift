@@ -39,4 +39,5 @@ enum RecipeListEvents {
     case refreshRecipes
     case queryRecipes(query: String)
     case goToDetails(recipe: Recipe)
+    case presentFeedback(message: FeedbackMessage)
 }

@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         mainCoordinator.start()
         
-        // create a basic UIWindow and activate it
-        window = UIWindow(frame: UIScreen.main.bounds)
+        // create a base UIWindow and activate it
+        window = BaseWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = mainNavController
         window?.makeKeyAndVisible()
         

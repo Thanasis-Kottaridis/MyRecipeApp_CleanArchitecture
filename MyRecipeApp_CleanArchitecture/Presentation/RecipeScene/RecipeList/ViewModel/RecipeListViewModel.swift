@@ -44,6 +44,8 @@ class RecipeListViewModel: RecipeActionDispatcher {
             break
         case .goToDetails(let recipe):
             recipeActionHandler.handleAction(action: .GO_TO_RECIPE_DETAILS(recipe: recipe))
+        case .presentFeedback(let message):
+            recipeActionHandler.handleAction(action: .PRESENT_FEEDBACK(feedbackMessage: message))
         }
     }
     
@@ -55,21 +57,25 @@ class RecipeListViewModel: RecipeActionDispatcher {
         { [weak self] recipeList in
             guard let self = self else { return }
 
+            let feedback = FeedbackMessage(message: "Message Fetch from storage", type: .success)
             self.state.accept(self.state.value.copy(
                 isLoading: false,
                 recipeList: recipeList,
-                feedBack: FeedbackMessage(message: "Message Fetch from storage", type: .success)))
-            
-            debugPrint("Message Fetch from storage")
+                feedBack: feedback))
+            self.onTriggeredEvent(event: .presentFeedback(message: feedback))
+            debugPrint(feedback.message)
         } completion: { [weak self]  recipeList in
             guard let self = self else { return }
 
+            let feedback = FeedbackMessage(message: "Message Fetch from network", type: .success)
             self.state.accept(self.state.value.copy(
                 isLoading: false,
                 recipeList: recipeList,
-                feedBack: FeedbackMessage(message: "Message Fetch from network", type: .success)))
-            debugPrint("Message Fetch from network")
+                feedBack: feedback))
             
+            self.onTriggeredEvent(event: .presentFeedback(message: feedback))
+            debugPrint(feedback.message)
+
         } errorCompletion: { [weak self] errorMessage in
             guard let self = self else { return }
             
@@ -77,7 +83,7 @@ class RecipeListViewModel: RecipeActionDispatcher {
                 isLoading: false,
                 feedBack: errorMessage
             ))
-                               
+            self.onTriggeredEvent(event: .presentFeedback(message: errorMessage))
             debugPrint(errorMessage.message)
         }
     }
