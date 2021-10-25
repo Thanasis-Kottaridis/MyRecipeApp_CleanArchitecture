@@ -28,7 +28,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="J3T-Hq-5cH" secondAttribute="bottom" id="0fB-Cl-e6p"/>
+                <constraint firstAttribute="bottom" secondItem="J3T-Hq-5cH" secondAttribute="bottom" id="0fB-Cl-e6p" customClass="KeyboardLayoutConstraint" customModule="MyRecipeApp_CleanArchitecture" customModuleProvider="target"/>
                 <constraint firstItem="J3T-Hq-5cH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8BT-0u-UUi"/>
                 <constraint firstItem="J3T-Hq-5cH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="WnP-5C-ocD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="J3T-Hq-5cH" secondAttribute="trailing" id="d6S-TT-N9b"/>
