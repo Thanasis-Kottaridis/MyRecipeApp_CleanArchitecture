@@ -22,7 +22,7 @@ class RecipeListVC: UIViewController {
     
     //MARK: - Outlets
     @IBOutlet weak var recipesTableView: UITableView!
-    lazy var searchController: UISearchController = UISearchController()
+    lazy var searchController: UISearchController = UISearchController(searchResultsController: nil)
     
     init(viewModel: RecipeListViewModel) {
         self.viewModel = viewModel
