@@ -55,8 +55,10 @@ class RecipeListVC: UIViewController {
         
         // set up search bar
         searchController.searchBar.placeholder = NSLocalizedString("SearchPlaceholder", comment: "")
+        searchController.dimsBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        
     }
     
     private func setUpObservers() {
@@ -98,6 +100,8 @@ class RecipeListVC: UIViewController {
     @objc func handleRefreshControl() {
         viewModel.onTriggeredEvent(event: .refreshRecipes)
         recipesTableView.refreshControl?.endRefreshing()
+        // dismiss search if in progress
+        searchController.isActive = false
     }
 }
 
