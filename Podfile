@@ -14,3 +14,9 @@ target 'MyRecipeApp_CleanArchitecture' do
   pod 'RxDataSources', '~> 5.0'
 
 end
+
+# RxTest and RxBlocking make the most sense in the context of unit/integration tests
+target 'MyRecipeApp_CleanArchitectureTests' do
+    pod 'RxBlocking', '6.2.0'
+    pod 'RxTest', '6.2.0'
+end

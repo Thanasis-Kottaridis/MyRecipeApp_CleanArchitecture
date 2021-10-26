@@ -19,8 +19,6 @@ class RecipeListUseCaseTest: XCTestCase {
     Recipe(id: 5, name: "recipe 5", price: "0.5$", thumbnail: "thumbnail/path/5", image: "image/path/5", description: "recipe 5 dec")
     ]
     
-    
-    
     enum MockRecipeRepositoryError: Error {
         case faildFetching
     }
