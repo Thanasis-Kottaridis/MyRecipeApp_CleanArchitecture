@@ -8,7 +8,7 @@
 import Foundation
 
 struct RecipeDto: Codable, Equatable {
-    var pk: Int?
+    var pk: Int
     var title: String?
     var publisher: String?
     var featuredImage: String?

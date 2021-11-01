@@ -43,8 +43,8 @@ final class RecipeListUseCaseImpl: RecipeListUseCase {
             page: page,
             query: query,
             forceReload: forceReload,
-            cached: {response in cached(response.results)},
-            completion: {response in completion(response.results)},
+            cached: {response in cached(response.results ?? [])},
+            completion: {response in completion(response.results ?? [])},
             errorCompletion: { error in
                 let feedbackMessage = FeedbackMessage(
                     message: error?.localizedDescription ?? "Something Went Wrong",

@@ -8,6 +8,8 @@
 import Foundation
 
 struct RecipeSearchResponse: Codable {
-    var count: Int
-    var results: [RecipeDto]
+    var count: Int = 0
+    var results: [RecipeDto]?
+    var next: String?
+    var previous: String?
 }

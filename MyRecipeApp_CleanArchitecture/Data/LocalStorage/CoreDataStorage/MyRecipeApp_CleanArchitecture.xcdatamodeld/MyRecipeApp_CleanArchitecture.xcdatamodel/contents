@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="IngredientsEntity" representedClassName="IngredientsEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeEntity" inverseName="ingredients" inverseEntity="RecipeEntity"/>
+    </entity>
+    <entity name="RecipeEntity" representedClassName="RecipeEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="featuredImage" optional="YES" attributeType="String"/>
+        <attribute name="longDateAdded" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="longDateUpdated" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pk" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="publisher" optional="YES" attributeType="String"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sourceUrl" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IngredientsEntity" inverseName="recipe" inverseEntity="IngredientsEntity"/>
+        <relationship name="searchResponse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipesSearchResponseEntity" inverseName="recipe" inverseEntity="RecipesSearchResponseEntity"/>
+    </entity>
     <entity name="RecipeListEntity" representedClassName="RecipeListEntity" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="String"/>
@@ -8,7 +24,23 @@
         <attribute name="recipe_description" optional="YES" attributeType="String"/>
         <attribute name="thumbnail" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="RecipeRequestEntity" representedClassName="RecipeRequestEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="page" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="query" attributeType="String"/>
+        <relationship name="reponse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipesSearchResponseEntity" inverseName="request" inverseEntity="RecipesSearchResponseEntity"/>
+    </entity>
+    <entity name="RecipesSearchResponseEntity" representedClassName="RecipesSearchResponseEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="count" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="next" optional="YES" attributeType="String"/>
+        <attribute name="previous" optional="YES" attributeType="String"/>
+        <relationship name="recipe" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeEntity" inverseName="searchResponse" inverseEntity="RecipeEntity"/>
+        <relationship name="request" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecipeRequestEntity" inverseName="reponse" inverseEntity="RecipeRequestEntity"/>
+    </entity>
     <elements>
         <element name="RecipeListEntity" positionX="-63" positionY="-18" width="128" height="43"/>
+        <element name="RecipeRequestEntity" positionX="-292.6129150390625" positionY="231.0038452148438" width="128" height="88"/>
+        <element name="RecipesSearchResponseEntity" positionX="-103.0775146484375" positionY="214.1305236816406" width="128" height="118"/>
+        <element name="RecipeEntity" positionX="87.4923095703125" positionY="171.1703796386719" width="128" height="193"/>
+        <element name="IngredientsEntity" positionX="256.7206420898438" positionY="240.4781494140625" width="128" height="73"/>
     </elements>
 </model>
