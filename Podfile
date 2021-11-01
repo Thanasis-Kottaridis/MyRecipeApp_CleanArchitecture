@@ -14,6 +14,11 @@ target 'Infrastracture' do
   infrastracture_pods
 end
 
+target 'Domain' do
+  project 'Domain/Domain.project'
+  # TODO: - Add Pods if needed
+end
+
 target 'MyRecipeApp_CleanArchitecture' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!

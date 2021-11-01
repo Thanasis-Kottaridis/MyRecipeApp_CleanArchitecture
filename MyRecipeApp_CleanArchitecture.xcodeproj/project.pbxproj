@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0531634CC201495FA7CF061B /* Pods_MyRecipeApp_CleanArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20252B6895F4E2C715D3D1D7 /* Pods_MyRecipeApp_CleanArchitecture.framework */; };
 		AE5CC2502730A853005F78C6 /* Infrastracture.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = AE5CC2432730A37B005F78C6 /* Infrastracture.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE5CC29E2730AF45005F78C6 /* Domain.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = AE5CC29C2730AF21005F78C6 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AEBA9EB32727038E000D2490 /* BaseWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA9EB22727038E000D2490 /* BaseWindow.swift */; };
 		AEBA9EB727271288000D2490 /* FeedbackMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA9EB627271288000D2490 /* FeedbackMessageView.swift */; };
 		AEBA9EB9272712DE000D2490 /* FeedbackMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEBA9EB8272712DE000D2490 /* FeedbackMessageView.xib */; };
@@ -63,6 +64,13 @@
 			remoteGlobalIDString = AE5CC2302730A000005F78C6;
 			remoteInfo = Infrastracture;
 		};
+		AE5CC29B2730AF21005F78C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE5CC2972730AF21005F78C6 /* Domain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AE5CC28C2730AEEE005F78C6;
+			remoteInfo = Domain;
+		};
 		AEBA9EC727275C04000D2490 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AEE53D4327237880004E075C /* Project object */;
@@ -79,6 +87,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				AE5CC29E2730AF45005F78C6 /* Domain.framework in Copy Frameworks */,
 				AE5CC2502730A853005F78C6 /* Infrastracture.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -92,6 +101,7 @@
 		501F7298EAA7F97D129085E1 /* libPods-MyRecipeApp_CleanArchitectureTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyRecipeApp_CleanArchitectureTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		866DD6C2A85D8B12EC3FC4F2 /* Pods-MyRecipeApp_CleanArchitecture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRecipeApp_CleanArchitecture.debug.xcconfig"; path = "Target Support Files/Pods-MyRecipeApp_CleanArchitecture/Pods-MyRecipeApp_CleanArchitecture.debug.xcconfig"; sourceTree = "<group>"; };
 		AE5CC23E2730A37B005F78C6 /* Infrastracture.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Infrastracture.xcodeproj; path = Infrastracture/Infrastracture.xcodeproj; sourceTree = "<group>"; };
+		AE5CC2972730AF21005F78C6 /* Domain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Domain.xcodeproj; path = Domain/Domain.xcodeproj; sourceTree = "<group>"; };
 		AEBA9EB22727038E000D2490 /* BaseWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWindow.swift; sourceTree = "<group>"; };
 		AEBA9EB627271288000D2490 /* FeedbackMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackMessageView.swift; sourceTree = "<group>"; };
 		AEBA9EB8272712DE000D2490 /* FeedbackMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackMessageView.xib; sourceTree = "<group>"; };
@@ -185,6 +195,7 @@
 		AE5CC23D2730A35D005F78C6 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				AE5CC2972730AF21005F78C6 /* Domain.xcodeproj */,
 				AE5CC23E2730A37B005F78C6 /* Infrastracture.xcodeproj */,
 			);
 			name = Dependencies;
@@ -194,6 +205,14 @@
 			isa = PBXGroup;
 			children = (
 				AE5CC2432730A37B005F78C6 /* Infrastracture.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE5CC2982730AF21005F78C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE5CC29C2730AF21005F78C6 /* Domain.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -251,9 +270,9 @@
 		AEE53D4227237880004E075C = {
 			isa = PBXGroup;
 			children = (
-				AE5CC23D2730A35D005F78C6 /* Dependencies */,
 				AEE53D4D27237880004E075C /* MyRecipeApp_CleanArchitecture */,
 				AEBA9EC427275C04000D2490 /* MyRecipeApp_CleanArchitectureTests */,
+				AE5CC23D2730A35D005F78C6 /* Dependencies */,
 				AEE53D4C27237880004E075C /* Products */,
 				9A16CFA1E2139314451BCF67 /* Pods */,
 				03FCA11A07D49344A1398BB5 /* Frameworks */,
@@ -639,6 +658,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = AE5CC2982730AF21005F78C6 /* Products */;
+					ProjectRef = AE5CC2972730AF21005F78C6 /* Domain.xcodeproj */;
+				},
+				{
 					ProductGroup = AE5CC23F2730A37B005F78C6 /* Products */;
 					ProjectRef = AE5CC23E2730A37B005F78C6 /* Infrastracture.xcodeproj */;
 				},
@@ -657,6 +680,13 @@
 			fileType = wrapper.framework;
 			path = Infrastracture.framework;
 			remoteRef = AE5CC2422730A37B005F78C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AE5CC29C2730AF21005F78C6 /* Domain.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Domain.framework;
+			remoteRef = AE5CC29B2730AF21005F78C6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
