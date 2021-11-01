@@ -20,7 +20,7 @@ enum RecipeApi: URLRequestConvertible {
     var path: String {
         switch self {
         case .fetchRecipeList:
-            return "/products"
+            return "/recipes.json"
         }
         // TODO: - ADD MORE PATHS HERE.
     }
