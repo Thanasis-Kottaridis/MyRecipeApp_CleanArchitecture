@@ -1,15 +1,15 @@
 //
 //  PhotosService.swift
-//  MyRecipeApp_CleanArchitecture
+//  Infrastracture
 //
-//  Created by thanos kottaridis on 24/10/21.
+//  Created by thanos kottaridis on 2/11/21.
 //
 
 import Foundation
 import Alamofire
 import AlamofireImage
 
-protocol PhotosService {
+public protocol PhotosService {
     func fetchImage(for url: String,
                     completion: @escaping (Image) -> Void,
                     errorCompletion: @escaping (Error) -> Void)
@@ -19,14 +19,16 @@ protocol PhotosService {
     func clearCachedImage(for url: String)
 }
 
-class PhotosProvider: PhotosService {
+public struct PhotosProvider: PhotosService {
     
     private var imageCache = AutoPurgingImageCache(
         memoryCapacity: 100_000_000,
         preferredMemoryUsageAfterPurge: 60_000_000
     )
     
-    func fetchImage(for url: String,
+    public init() {}
+    
+    public func fetchImage(for url: String,
                     completion: @escaping (Image) -> Void,
                     errorCompletion: @escaping (Error) -> Void) {
         AF.request(url).responseImage { response in
@@ -39,15 +41,15 @@ class PhotosProvider: PhotosService {
         }
     }
     
-    func cacheImage(image: Image, for url: String) {
+    public func cacheImage(image: Image, for url: String) {
         imageCache.add(image, withIdentifier: url)
     }
     
-    func getCachedImage(for url: String) -> Image? {
+    public func getCachedImage(for url: String) -> Image? {
         return imageCache.image(withIdentifier: url)
     }
     
-    func clearCachedImage(for url: String) {
+    public func clearCachedImage(for url: String) {
         imageCache.removeImage(withIdentifier: url)
     }
 }

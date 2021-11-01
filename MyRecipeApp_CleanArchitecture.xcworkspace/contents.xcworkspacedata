@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Infrastracture/Infrastracture.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:MyRecipeApp_CleanArchitecture.xcodeproj">
    </FileRef>
    <FileRef

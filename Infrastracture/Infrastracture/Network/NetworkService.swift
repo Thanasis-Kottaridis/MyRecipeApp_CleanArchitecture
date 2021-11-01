@@ -1,16 +1,18 @@
 //
 //  NetworkService.swift
-//  MyRecipeApp_CleanArchitecture
+//  Infrastracture
 //
-//  Created by thanos kottaridis on 23/10/21.
+//  Created by thanos kottaridis on 2/11/21.
 //
 
 import Foundation
 import Alamofire
 
-struct NetworkProvider {
+public struct NetworkProvider {
     
-    lazy var manager: Session = {
+    public init() {}
+    
+    lazy public var manager: Session = {
         //1
         let configuration = URLSessionConfiguration.af.default
         //2

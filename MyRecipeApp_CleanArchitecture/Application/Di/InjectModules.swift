@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import Infrastracture
 
 private struct AppConfigKey: InjectionKey {
     static var currentValue: AppConfig = AppConfig()
