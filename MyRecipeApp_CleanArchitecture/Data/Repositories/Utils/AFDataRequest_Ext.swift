@@ -36,6 +36,7 @@ extension DataRequest {
                 case .success(let data):
                     completion(data)
                 case .failure(let error):
+                    print(response.result)
                     errorCompletion(error.underlyingError)
                 }
             }

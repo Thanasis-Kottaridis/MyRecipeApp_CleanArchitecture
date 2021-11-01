@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RecipeCellDelegate: AnyObject {
-    func didTapRecipe(recipe: Recipe)
+    func didTapRecipe(recipe: RecipeDto)
 }
 
 class RecipeListCell: UITableViewCell {
@@ -20,7 +20,7 @@ class RecipeListCell: UITableViewCell {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
     
-    private var recipe: Recipe?
+    private var recipe: RecipeDto?
     private weak var delegate: RecipeCellDelegate?
     
     override func awakeFromNib() {
@@ -29,13 +29,13 @@ class RecipeListCell: UITableViewCell {
     }
 
     
-    func setUpCell(recipe: Recipe, delegate: RecipeCellDelegate) {
+    func setUpCell(recipe: RecipeDto, delegate: RecipeCellDelegate) {
         self.recipe = recipe
         self.delegate = delegate
                 
         // set up cell views
-        titleLbl.text = recipe.name
-        descriptionLbl.text = recipe.description
+        titleLbl.text = recipe.title
+        descriptionLbl.text = String(recipe.rating ?? 0)
         contentView.addTapGestureRecognizer {
             delegate.didTapRecipe(recipe: recipe)
         }
@@ -43,7 +43,7 @@ class RecipeListCell: UITableViewCell {
         // set up thumbnail
         thumbnail.layer.cornerRadius = 8
         // fetch photo
-        guard let thumbnailUrl = recipe.thumbnail
+        guard let thumbnailUrl = recipe.featuredImage
         else {
             self.thumbnail.image = UIImage(named: "no_image_available")
             return

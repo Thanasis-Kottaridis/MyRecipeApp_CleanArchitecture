@@ -8,11 +8,12 @@
 import Foundation
 
 protocol RecipeRepository {
-    func fetchRecipes(forceReload: Bool,
-                      cached: @escaping ([Recipe])-> Void,
-                      completion: @escaping ([Recipe])-> Void,
-                      errorCompletion: @escaping (Error?)-> Void
-    )
+    func fetchRecipes(page: Int,
+                      query: String,
+                      forceReload: Bool,
+                      cached: @escaping (RecipeSearchResponse)-> Void,
+                      completion: @escaping (RecipeSearchResponse)-> Void,
+                      errorCompletion: @escaping (Error?)-> Void)
     
     func queryRecipes(query: String,
                       completion: @escaping ([Recipe])-> Void,

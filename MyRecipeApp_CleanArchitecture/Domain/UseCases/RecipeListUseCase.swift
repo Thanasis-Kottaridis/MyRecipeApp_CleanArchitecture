@@ -10,9 +10,11 @@ import Foundation
 protocol RecipeListUseCase {
         
     func execute(
+        page: Int,
+        query: String,
         forceReload: Bool,
-        cached: @escaping ([Recipe]) -> Void,
-        completion: @escaping ([Recipe]) -> Void,
+        cached: @escaping ([RecipeDto]) -> Void,
+        completion: @escaping ([RecipeDto]) -> Void,
         errorCompletion: @escaping (FeedbackMessage)-> Void
     )
     
@@ -30,15 +32,19 @@ final class RecipeListUseCaseImpl: RecipeListUseCase {
     private var recipeRepository: RecipeRepository
     
     func execute(
+        page: Int,
+        query: String,
         forceReload: Bool,
-        cached: @escaping ([Recipe]) -> Void,
-        completion: @escaping ([Recipe]) -> Void,
+        cached: @escaping ([RecipeDto]) -> Void,
+        completion: @escaping ([RecipeDto]) -> Void,
         errorCompletion: @escaping (FeedbackMessage) -> Void
     ) {
         recipeRepository.fetchRecipes(
+            page: page,
+            query: query,
             forceReload: forceReload,
-            cached: cached,
-            completion: completion,
+            cached: {response in cached(response.results)},
+            completion: {response in completion(response.results)},
             errorCompletion: { error in
                 let feedbackMessage = FeedbackMessage(
                     message: error?.localizedDescription ?? "Something Went Wrong",

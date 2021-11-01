@@ -53,7 +53,10 @@ class RecipeListViewModel: RecipeActionDispatcher {
         // set state to loading state
         self.state.accept(state.value.copy(isLoading: true))
         
-        useCase.execute (forceReload: forceReload)
+        useCase.execute (
+            page: state.value.page,
+            query: state.value.query,
+            forceReload: forceReload)
         { [weak self] recipeList in
             guard let self = self else { return }
 
@@ -88,18 +91,18 @@ class RecipeListViewModel: RecipeActionDispatcher {
     private func queryRecipes(query: String){
         self.state.accept(state.value.copy(isLoading: true))
 
-        useCase.queryRecipes(query: query) { recipeList in
-            self.state.accept(self.state.value.copy(
-                isLoading: false,
-                recipeList: recipeList))
-        } errorCompletion: { errorMessage in
-            self.state.accept(self.state.value.copy(
-                isLoading: false
-            ))
-            
-            self.onTriggeredEvent(event: .presentFeedback(message: errorMessage))
-            debugPrint(errorMessage.message)
-        }
+//        useCase.queryRecipes(query: query) { recipeList in
+//            self.state.accept(self.state.value.copy(
+//                isLoading: false,
+//                recipeList: recipeList))
+//        } errorCompletion: { errorMessage in
+//            self.state.accept(self.state.value.copy(
+//                isLoading: false
+//            ))
+//            
+//            self.onTriggeredEvent(event: .presentFeedback(message: errorMessage))
+//            debugPrint(errorMessage.message)
+//        }
 
     }
 }

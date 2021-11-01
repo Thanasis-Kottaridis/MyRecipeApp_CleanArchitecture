@@ -17,45 +17,68 @@ final class RecipeRepositoryImpl: RecipeRepository {
     
     /// fetch recipe from server
     private func fetchRecipesFromServer(
-        completion: @escaping ([Recipe]) -> Void,
+        page: Int,
+        query: String,
+        completion: @escaping (RecipeSearchResponse) -> Void,
         errorCompletion: @escaping (Error?)-> Void) {
             
             // extended completion to store data locally
-            let _completion: (([Recipe]) -> Void) = { recipeList in
+            let _completion: ((RecipeSearchResponse) -> Void) = { recipeResponse in
                 // cache response to local storage
-                self.cache.save(response: recipeList)
+                // TODO: - FIX Local caching
+                //                self.cache.save(response: recipeList)
+                
+                
                 // perform completion
-                completion(recipeList)
+                completion(recipeResponse)
             }
             
-            let _ = self.sessionManager.request(RecipeApi.fetchRecipeList)
+            let _ = self.sessionManager
+                .request(RecipeApi.fetchRecipeList(page: page, query: query))
                 .validateResponseWrapper(
-                    fromType: [Recipe].self,
+                    fromType: RecipeSearchResponse.self,
                     completion: _completion,
                     errorCompletion: errorCompletion)
         }
     
     func fetchRecipes(
+        page: Int,
+        query: String,
         forceReload: Bool,
-        cached: @escaping ([Recipe]) -> Void,
-        completion: @escaping ([Recipe]) -> Void,
+        cached: @escaping (RecipeSearchResponse) -> Void,
+        completion: @escaping (RecipeSearchResponse) -> Void,
         errorCompletion: @escaping (Error?)-> Void
     ) {
         
         // fetch from network if forceReload required
         if forceReload {
-            self.fetchRecipesFromServer(completion: completion, errorCompletion: errorCompletion)
+            self.fetchRecipesFromServer(page: page,
+                                        query: query,
+                                        completion: completion,
+                                        errorCompletion: errorCompletion)
             return
         }
         
-        cache.getAllRecipes {[weak self] result in
-            if case let .success(recipeList) = result,
-               !recipeList.isEmpty {
-                cached(recipeList)
-            } else {
-                self?.fetchRecipesFromServer(completion: completion, errorCompletion: errorCompletion)
-            }
-        }
+        
+        // TODO: - FIX Local caching
+        //        cache.getAllRecipes {[weak self] result in
+        //            if case let .success(recipeResponse) = result,
+        //               !recipeResponse.isEmpty {
+        //                cached(recipeList)
+        //
+        //            } else {
+        //                self?.fetchRecipesFromServer(page: page,
+        //                                             query: query,
+        //                                             completion: completion,
+        //                                             errorCompletion: errorCompletion)
+        //            }
+        //        }
+        
+        self.fetchRecipesFromServer(page: page,
+                                    query: query,
+                                    completion: completion,
+                                    errorCompletion: errorCompletion)
+        
     }
     
     func queryRecipes(query: String, completion: @escaping ([Recipe]) -> Void, errorCompletion: @escaping (Error?) -> Void) {

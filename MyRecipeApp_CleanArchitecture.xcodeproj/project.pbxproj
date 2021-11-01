@@ -53,6 +53,8 @@
 		AEE53DD6272625F8004E075C /* RecipeDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53DD5272625F8004E075C /* RecipeDetailsViewModel.swift */; };
 		AEE53DD927262621004E075C /* RecipeDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE53DD727262621004E075C /* RecipeDetailsVC.swift */; };
 		AEE53DDA27262621004E075C /* RecipeDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEE53DD827262621004E075C /* RecipeDetailsVC.xib */; };
+		AEF6E65B272ED9C000ACE580 /* RecipeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF6E65A272ED9C000ACE580 /* RecipeDto.swift */; };
+		AEF6E65D272ED9DE00ACE580 /* RecipeSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF6E65C272ED9DE00ACE580 /* RecipeSearchResponse.swift */; };
 		BB7E87505B3172C3A4D37A94 /* libPods-MyRecipeApp_CleanArchitectureTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 501F7298EAA7F97D129085E1 /* libPods-MyRecipeApp_CleanArchitectureTests.a */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +121,8 @@
 		AEE53DD5272625F8004E075C /* RecipeDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewModel.swift; sourceTree = "<group>"; };
 		AEE53DD727262621004E075C /* RecipeDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsVC.swift; sourceTree = "<group>"; };
 		AEE53DD827262621004E075C /* RecipeDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeDetailsVC.xib; sourceTree = "<group>"; };
+		AEF6E65A272ED9C000ACE580 /* RecipeDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDto.swift; sourceTree = "<group>"; };
+		AEF6E65C272ED9DE00ACE580 /* RecipeSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchResponse.swift; sourceTree = "<group>"; };
 		D6F4D7F2291EF508C857C0E7 /* Pods-MyRecipeApp_CleanArchitectureTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRecipeApp_CleanArchitectureTests.release.xcconfig"; path = "Target Support Files/Pods-MyRecipeApp_CleanArchitectureTests/Pods-MyRecipeApp_CleanArchitectureTests.release.xcconfig"; sourceTree = "<group>"; };
 		EE79F0088DB6761DFC235C8A /* Pods-MyRecipeApp_CleanArchitectureTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRecipeApp_CleanArchitectureTests.debug.xcconfig"; path = "Target Support Files/Pods-MyRecipeApp_CleanArchitectureTests/Pods-MyRecipeApp_CleanArchitectureTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -312,6 +316,8 @@
 				AEE53D6C272382D0004E075C /* Recipe.swift */,
 				AEE53D952724715E004E075C /* RecipeList.swift */,
 				AEE53DC12725CFD9004E075C /* FeedbackMessage.swift */,
+				AEF6E65A272ED9C000ACE580 /* RecipeDto.swift */,
+				AEF6E65C272ED9DE00ACE580 /* RecipeSearchResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -736,6 +742,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEF6E65B272ED9C000ACE580 /* RecipeDto.swift in Sources */,
 				AEE53DCB2725F1FF004E075C /* UIView_Ext.swift in Sources */,
 				AEE53DD6272625F8004E075C /* RecipeDetailsViewModel.swift in Sources */,
 				AEE53D832723A749004E075C /* RecipeListViewModel.swift in Sources */,
@@ -759,6 +766,7 @@
 				AEE53DAC27257626004E075C /* RecipeEntity+Mapping.swift in Sources */,
 				AEE53DB22725A409004E075C /* RecipeListState.swift in Sources */,
 				AEE53D762723848F004E075C /* Coordinator.swift in Sources */,
+				AEF6E65D272ED9DE00ACE580 /* RecipeSearchResponse.swift in Sources */,
 				AEE53D5927237880004E075C /* MyRecipeApp_CleanArchitecture.xcdatamodeld in Sources */,
 				AEE53DC22725CFD9004E075C /* FeedbackMessage.swift in Sources */,
 				AEE53D8E27243BAD004E075C /* NetworkService.swift in Sources */,

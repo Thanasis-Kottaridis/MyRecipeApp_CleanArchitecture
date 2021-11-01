@@ -9,21 +9,31 @@ import Foundation
 
 struct RecipeListState {
     let isLoading: Bool
-    let recipeList: [Recipe]
+    let page: Int
+    let query: String
+    let recipeList: [RecipeDto]
     // TODO: - Add Search properties here.
     
     init(isLoading: Bool = false,
-         recipeList: [Recipe] = []
+         page: Int = 1,
+         query: String = "",
+         recipeList: [RecipeDto] = []
     ){
         self.isLoading = isLoading
+        self.page = page
+        self.query = query
         self.recipeList = recipeList
     }
     
     func copy(isLoading: Bool? = nil,
-              recipeList: [Recipe]? = nil
+              page: Int? = nil,
+              query: String? = nil,
+              recipeList: [RecipeDto]? = nil
     ) -> RecipeListState {
         return RecipeListState (
             isLoading: isLoading ?? self.isLoading,
+            page: page ?? self.page,
+            query: query ?? self.query,
             recipeList: recipeList ?? self.recipeList
         )
     }

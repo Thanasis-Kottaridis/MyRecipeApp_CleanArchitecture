@@ -65,7 +65,7 @@ class RecipeListVC: UIViewController {
         // set up tableView binding observer
         viewModel.stateObserver
             .observe(on: MainScheduler.instance) /// observe on mainThread coz we update UI
-            .map { newState -> [Recipe] in
+            .map { newState -> [RecipeDto] in
                 return newState.recipeList
             }
             .distinctUntilChanged()
@@ -107,8 +107,9 @@ class RecipeListVC: UIViewController {
 
 //MARK: - Recipe Cell Delegate
 extension RecipeListVC: RecipeCellDelegate {
-    func didTapRecipe(recipe: Recipe) {
+    func didTapRecipe(recipe: RecipeDto) {
+        //TODO: - FIX DETAILS PAGE
         // show recipe details
-        viewModel.onTriggeredEvent(event: .goToDetails(recipe: recipe))
+//        viewModel.onTriggeredEvent(event: .goToDetails(recipe: recipe))
     }
 }
