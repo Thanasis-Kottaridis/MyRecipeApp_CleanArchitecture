@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import Domain
 
 extension Recipe {
     func toEntity(in context: NSManagedObjectContext) -> RecipeListEntity {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Domain
 
 class BaseWindow: UIWindow {
 

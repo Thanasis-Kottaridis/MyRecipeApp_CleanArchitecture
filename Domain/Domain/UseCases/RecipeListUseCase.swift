@@ -1,13 +1,13 @@
 //
-//  SearchRecipeUseCase.swift
-//  MyRecipeApp_CleanArchitecture
+//  RecipeListUseCase.swift
+//  Domain
 //
-//  Created by thanos kottaridis on 24/10/21.
+//  Created by thanos kottaridis on 2/11/21.
 //
 
 import Foundation
 
-protocol RecipeListUseCase {
+public protocol RecipeListUseCase {
         
     func execute(
         forceReload: Bool,
@@ -23,13 +23,16 @@ protocol RecipeListUseCase {
     )
 }
 
-// TODO: - Add implementation for search recipes 
-final class RecipeListUseCaseImpl: RecipeListUseCase {
+// TODO: - Add implementation for search recipes
+public final class RecipeListUseCaseImpl: RecipeListUseCase {
     
-    @Injected(\.recipeRepository)
     private var recipeRepository: RecipeRepository
     
-    func execute(
+    public init (recipeRepository: RecipeRepository) {
+        self.recipeRepository = recipeRepository
+    }
+    
+    public func execute(
         forceReload: Bool,
         cached: @escaping ([Recipe]) -> Void,
         completion: @escaping ([Recipe]) -> Void,
@@ -48,7 +51,7 @@ final class RecipeListUseCaseImpl: RecipeListUseCase {
         )
     }
     
-    func queryRecipes(
+    public func queryRecipes(
         query: String,
         completion: @escaping ([Recipe]) -> Void,
         errorCompletion: @escaping (FeedbackMessage) -> Void

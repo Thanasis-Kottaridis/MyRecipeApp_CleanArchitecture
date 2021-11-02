@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Domain
 
 @IBDesignable
 class FeedbackMessageView: UIView {

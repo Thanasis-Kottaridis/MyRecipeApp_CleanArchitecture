@@ -1,13 +1,13 @@
 //
 //  RecipeRepository.swift
-//  MyRecipeApp_CleanArchitecture
+//  Domain
 //
-//  Created by thanos kottaridis on 23/10/21.
+//  Created by thanos kottaridis on 2/11/21.
 //
 
 import Foundation
 
-protocol RecipeRepository {
+public protocol RecipeRepository {
     func fetchRecipes(forceReload: Bool,
                       cached: @escaping ([Recipe])-> Void,
                       completion: @escaping ([Recipe])-> Void,

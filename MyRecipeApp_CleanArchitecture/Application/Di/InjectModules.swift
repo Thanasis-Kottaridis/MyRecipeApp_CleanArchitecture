@@ -7,6 +7,7 @@
 
 import Foundation
 import Infrastracture
+import Domain
 
 private struct AppConfigKey: InjectionKey {
     static var currentValue: AppConfig = AppConfig()
@@ -33,7 +34,7 @@ private struct RecipeStorageProviderKey: InjectionKey {
 }
 
 private struct RecipeListUseCaseKey: InjectionKey {
-    static var currentValue: RecipeListUseCase = RecipeListUseCaseImpl()
+    static var currentValue: RecipeListUseCase = RecipeListUseCaseImpl(recipeRepository: InjectedValues[\.recipeRepository])
 }
 
 /**

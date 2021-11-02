@@ -7,6 +7,7 @@
 
 import Infrastracture
 import UIKit
+import Domain
 
 protocol RecipeCellDelegate: AnyObject {
     func didTapRecipe(recipe: Recipe)
